@@ -1,3 +1,6 @@
-# js-plataforma-cursos-online
+# Plataforma de cursos online
 
-WIP...
+#### Requisitos:
+MongoDB\
+NodeJS\
+Terminal Shell/Powershell

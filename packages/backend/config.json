@@ -1,0 +1,8 @@
+{
+  "databaseConf": {
+    "mongo": {
+      "host": "localhost",
+      "database": "plataformaCursos"
+    }
+  }
+}

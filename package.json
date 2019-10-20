@@ -1,0 +1,19 @@
+{
+  "name": "js-plataforma-cursos-online",
+  "version": "1.0.0",
+  "description": "WIP...",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThiagoCortez81/js-plataforma-cursos-online.git"
+  },
+  "author": "Thiago Cortez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ThiagoCortez81/js-plataforma-cursos-online/issues"
+  },
+  "homepage": "https://github.com/ThiagoCortez81/js-plataforma-cursos-online#readme"
+}

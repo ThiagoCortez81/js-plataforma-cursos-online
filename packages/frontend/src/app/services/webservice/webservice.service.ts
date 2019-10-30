@@ -18,12 +18,28 @@ export class WebserviceService {
         return this.doGet(this.urlBuilder('aluno/list'), params);
     }
 
+    insertAluno(payload: any) {
+        return this.doPost(this.urlBuilder('aluno/insert'), payload);
+    }
+
+    updateAluno(payload: any) {
+        return this.doPut(this.urlBuilder('aluno/update'), payload)
+    }
+
+    deleteAluno(id: string) {
+        return this.doDelete(this.urlBuilder('aluno/delete'), {id: id})
+    }
+
     private urlBuilder(endpoint: string): string {
         return `${this._URL_WEBSERVICES}${endpoint}`;
     }
 
     private doPost(url: string, payload: any, headers?: any) {
         return this._http.post(url, payload, {headers: headers});
+    }
+
+    private doPut(url: string, payload: any, headers?: any) {
+        return this._http.put(url, payload, {headers: headers});
     }
 
     private doGet(url: string, params?: any) {
@@ -35,5 +51,16 @@ export class WebserviceService {
         console.log(urlBuild);
 
         return this._http.get(urlBuild);
+    }
+
+    private doDelete(url: string, params?: any) {
+        let urlBuild = `${url}/`;
+        if (params != undefined)
+            for (const key of Object.keys(params))
+                urlBuild += `${params[key]}/`;
+
+        console.log(urlBuild);
+
+        return this._http.delete(urlBuild);
     }
 }

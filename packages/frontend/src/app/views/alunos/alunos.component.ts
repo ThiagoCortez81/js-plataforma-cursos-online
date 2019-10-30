@@ -21,7 +21,7 @@ export class AlunosComponent implements OnInit {
         this.alunos = await this._ws.listarAlunos().toPromise();
     }
 
-    async editAluno(id: string) {;
+    async editAluno(id: string) {
         this.router.navigate(['alunos/edit', id]);
     }
 
@@ -29,21 +29,18 @@ export class AlunosComponent implements OnInit {
         this.router.navigate(['alunos/add']);
     }
 
-    excluirAluno(ra) {
-        if (confirm(`Deseja mesmo remover este aluno? (RA: ${ra})`)){
+    excluirAluno(id) {
+        if (confirm(`Deseja mesmo remover este aluno? (ID: ${id})`)){
             const data = {
-                RA: ra
+                RA: id
             };
 
-            /*this.http.post(`http://localhost:5000/del-aluno`, data).subscribe((res: any) => {
-                console.log(res.result);
-                console.log(res.result == 'Ok!');
-                if (res.result == 'Ok!'){
+            this._ws.deleteAluno(id).subscribe((res:any) => {
+                if (res.success)
                     this.listAlunos();
-                } else {
-                    alert("Erro ao remover aluno. Tente novamente");
-                }
-            });*/
+                else
+                    alert(res.message);
+            });
         }
     }
 

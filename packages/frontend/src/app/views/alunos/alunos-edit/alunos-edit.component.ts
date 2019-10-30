@@ -14,6 +14,7 @@ export class AlunosEditComponent implements OnInit {
         email: '',
         nome: '',
         senha: '',
+        confirmarSenha: '',
         sexo: '',
         sobrenome: '',
         _id: ''
@@ -34,35 +35,27 @@ export class AlunosEditComponent implements OnInit {
     }
 
     async getAluno(id) {
-        const alunoObj: any = await this._ws.listarAlunos(id).toPromise()
+        const alunoObj: any = await this._ws.listarAlunos(id).toPromise();
+        delete alunoObj.aluno.senha;
         this.aluno = alunoObj.aluno;
     }
 
     salvarAluno() {
-       /* const data = {
-            RA: this.aluno.RA,
-            name: this.aluno.Nome,
-            login: this.aluno.Login,
-            senha: this.aluno.Senha
-        };*/
-
-/*        if (!this.isNew) {
-            this.http.post(`http://localhost:5000/edit-aluno`, data).subscribe((res: any) => {
-                if (res.result == 'Ok!') {
+        if (this.isNew) {
+            this._ws.insertAluno(this.aluno).subscribe((res: any) => {
+                if (res.success)
                     this.router.navigate(['alunos']);
-                } else {
-                    alert('Erro ao alterar aluno. Tente novamente');
-                }
-            });
+                else
+                    alert(res.message);
+            })
         } else {
-            this.http.post(`http://localhost:5000/add-aluno`, data).subscribe((res: any) => {
-                if (res.result == 'Ok!') {
+            this._ws.updateAluno(this.aluno).subscribe((res: any) => {
+                if (res.success)
                     this.router.navigate(['alunos']);
-                } else {
-                    alert('Erro ao alterar aluno. Tente novamente');
-                }
-            });
-        } */
+                else
+                    alert(res.message);
+            })
+        }
     }
 
 }

@@ -1,0 +1,19 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <b>Criar avaliação</b>
+    </div>
+    <div class="card-body">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-user"></i></span>
+        </div>
+        <select class="form-control" [(ngModel)]="turmaSel" required>
+          <option value="" selected>-- Selecione uma turma--</option>
+          <option *ngFor="let turma of listTurmas" value="{{turma.TurmaID}}">(#{{turma.TurmaID}}) {{turma.NomeDisciplina}} - {{turma.NomeProfessor}}</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-block btn-success" (click)="salvarMatricula()"><i class="fa fa-floppy-o"></i> Salvar</button>
+    </div>
+  </div>
+</div>

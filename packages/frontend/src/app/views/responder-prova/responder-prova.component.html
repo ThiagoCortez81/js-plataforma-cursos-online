@@ -1,0 +1,21 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <b>Responder prova #{{idAval}}</b>
+        </div>
+        <div class="card-body">
+            <div class="col-md-12">
+                <div class="mt-1" *ngFor="let questao of questoes; let i = index">
+                    <h4>{{i + 1}}. {{questao.enunciado}}</h4>
+                    <label class="w-100" *ngFor="let resposta of questao.respostas;">
+                        <input type="radio" name="resp_{{i}}" (change)="setSelecao(i, resposta, questao.idQues);"> {{resposta}}
+                    </label>
+                    <hr>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button class="btn btn-success w-100" (click)="enviarRespostas()"><i class="fa fa-send"></i> Enviar respostas</button>
+            </div>
+        </div>
+    </div>
+</div>

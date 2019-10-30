@@ -1,0 +1,41 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <b>Avaliações</b>
+    </div>
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-12 text-right">
+          <h5>Média na disciplina: <span class="badge badge-dark">{{mediaNota.toFixed(2)}}</span></h5>
+        </div>
+        <div class="col-md-12 text-center">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Numero Avaliação (#)</th>
+              <th scope="col">Descrição</th>
+              <th scope="col">Número de questões</th>
+              <th scope="col">Ação</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngIf="listProvas == null || listProvas == undefined || listProvas.length == 0">
+              <td colspan="4">Sem avaliações cadastradas</td>
+            </tr>
+            <tr *ngFor="let prova of listProvas">
+              <td>{{prova.idAval}}</td>
+              <td>Prova de {{prova.descricao}}</td>
+              <td>{{prova.qtdPerguntas}}</td>
+              <td>
+                <button class="btn btn-success" title="Responder prova #{{prova.idAval}}" *ngIf="prova.countRespondida == 0 && !idAluno" (click)="responderProva(prova.idAval)"><i class="fa fa-check"></i></button>
+                <span class="badge badge-success" *ngIf="prova.countRespondida != 0">RESPONDIDO!</span>
+                <span class="badge badge-dark" *ngIf="prova.countRespondida != 0">NOTA: {{prova.nota}}</span>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

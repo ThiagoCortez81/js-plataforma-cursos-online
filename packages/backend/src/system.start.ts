@@ -1,5 +1,6 @@
 import express, {Application} from 'express';
 import morgan from 'morgan';
+import cors from 'cors';
 
 import apiRoutes from "./routes/apiRoutes";
 import {Mongoose} from "mongoose";
@@ -11,6 +12,7 @@ class Server {
     public app: Application;
     public mongoUrl = config.databaseConf.mongo.host;
     public mongoDatabase = config.databaseConf.mongo.database;
+    public static _front_root_path = __dirname + '/../../../frontend/dist';
 
     constructor() {
         this.app = express();
@@ -22,14 +24,20 @@ class Server {
         this.app.set('port', process.env.PORT || 8080);
 
         this.app.set('timeout', (30 * 60000));
+        this.app.use(cors()); // Apenas para dev do front, remover depois
         this.app.use(morgan('dev'));
         this.app.use(express.json());
         this.app.use(express.urlencoded({extended: false}));
     }
 
     routes(): void {
-        this.app.use(express.static(__dirname + '/../../../frontend/dist'));
         this.app.use('/api', apiRoutes);
+
+        // Rotas para o frontend
+        this.app.get('*.*', express.static(Server._front_root_path, {maxAge: '1y'}));
+        this.app.all('*', function (req: any, res: any) {
+            res.status(200).sendFile(`/`, {root: Server._front_root_path});
+        });
     }
 
     start(): void {

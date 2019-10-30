@@ -1,0 +1,42 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <b>Questões</b>
+    </div>
+    <div class="card-body">
+      <div class="col-md-12 text-right">
+        <button class="btn btn-success" (click)="adicionarQuestao()"><i class="fa fa-plus-circle"></i>
+          Nova questão
+        </button>
+        <hr>
+      </div>
+      <div class="col-md-12 mt-1 text-center">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">ID (#)</th>
+            <th scope="col">Disciplina</th>
+            <th scope="col">Enunciado</th>
+            <th scope="col">Resposta Correta</th>
+            <th scope="col">Presente na avaliação</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngIf="listQuestoes == undefined || listQuestoes.length == 0">
+            <td colspan="5">Nenhuma questão cadastrada</td>
+          </tr>
+          <tr *ngFor="let questao of listQuestoes">
+            <td>{{questao.idQues}}</td>
+            <td>{{questao.Nome}}</td>
+            <td>{{questao.enunciado}}</td>
+            <td>{{questao.altCorreta}}</td>
+            <td>
+              <input type="checkbox" [(ngModel)]="questao.selected" (click)="syncPresent(questao)">
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

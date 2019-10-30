@@ -1,0 +1,37 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header" *ngIf="!isNew">
+      <b>Editando professor {{professor.Nome}}</b>
+    </div>
+    <div class="card-header" *ngIf="!isNew">
+      <b>Nvo professor</b>
+    </div>
+    <div class="card-body">
+      <div class="input-group mb-3" *ngIf="!isNew">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-wrench"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="professor.id" placeholder="id" autocomplete="ra" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-user"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="professor.Nome"  placeholder="Nome" autocomplete="nome" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-shield"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="professor.Login"  placeholder="Login" autocomplete="login" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-shield"></i></span>
+        </div>
+        <input type="password" class="form-control" [(ngModel)]="professor.Senha" placeholder="Senha" autocomplete="senha" required>
+      </div>
+      <button type="button" class="btn btn-block btn-success" (click)="salvarProfessor()"><i class="fa fa-floppy-o"></i> Salvar</button>
+    </div>
+  </div>
+</div>

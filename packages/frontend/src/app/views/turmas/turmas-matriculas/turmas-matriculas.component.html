@@ -1,0 +1,46 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <b>Matriculas da turma #{{id}}</b>
+    </div>
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-12 text-center">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Numero Matricula (#)</th>
+              <th scope="col">Disciplina</th>
+              <th scope="col">RA do Aluno</th>
+              <th scope="col">Nome do Aluno</th>
+              <th scope="col">Data de matrícula</th>
+              <th scope="col">Status</th>
+              <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngIf="listMatriculas == undefined || listMatriculas.lenght == 0">
+              <td colspan="7">Sem nenhuma matricula até o momento</td>
+            </tr>
+            <tr *ngFor="let matricula of listMatriculas">
+              <td>{{matricula.matriculaID}}</td>
+              <td>{{matricula.disciplina}}</td>
+              <td>{{matricula.alunoRA}}</td>
+              <td>{{matricula.alunoNome}}</td>
+              <td>{{matricula.dataMatricula}}</td>
+              <td>
+                <span class="badge badge-danger" *ngIf="matricula.mediaAluno != null && matricula.mediaAluno <= 6">NOTA: {{matricula.mediaAluno.toFixed(2)}} - REPROVADO</span>
+                <span class="badge badge-success" *ngIf="matricula.mediaAluno != null && matricula.mediaAluno > 6">NOTA: {{matricula.mediaAluno.toFixed(2)}} - APROVADO</span>
+                <span class="badge badge-dark" *ngIf="matricula.mediaAluno == null">SEM AVALIAÇÕES</span>
+              </td>
+              <td>
+                <button class="btn btn-sm btn-success" (click)="verNotas(id, matricula.alunoRA)"><i class="fa fa-user"></i> Ver notas</button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

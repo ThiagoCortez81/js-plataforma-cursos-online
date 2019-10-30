@@ -1,0 +1,43 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header" *ngIf="!isNew">
+      <b>Editando questao {{questao.enunciado}}</b>
+    </div>
+    <div class="card-header" *ngIf="isNew">
+      <b>Nova questao</b>
+    </div>
+    <div class="card-body">
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-wrench"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="questao.enunciado" placeholder="Enunciado" autocomplete="enunciado" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-check"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="questao.altCorreta" placeholder="Questão 1 (Correta)" autocomplete="questao1" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-question"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="questao.alt2" placeholder="Questão 2" autocomplete="questao2" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-question"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="questao.alt3" placeholder="Questão 3" autocomplete="questao3" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-question"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="questao.alt4" placeholder="Questão 4" autocomplete="questao4" required>
+      </div>
+      <button type="button" class="btn btn-block btn-success" (click)="salvarQuestao()"><i class="fa fa-floppy-o"></i> Salvar</button>
+    </div>
+  </div>
+</div>

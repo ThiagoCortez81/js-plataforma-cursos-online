@@ -1,0 +1,34 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <b>Matriculas do aluno de RA #{{id}}</b>
+        </div>
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-12 text-center">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">Numero Matricula (#)</th>
+                            <th scope="col">Disciplina</th>
+                            <th scope="col">Professor responsável</th>
+                            <th scope="col">Data de matrícula</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngIf="listMatriculas == undefined || listMatriculas.lenght == 0">
+                            <td colspan="4">Aluno ainda não se matriculou em nenhuma turma</td>
+                        </tr>
+                        <tr *ngFor="let matricula of listMatriculas">
+                            <td>{{matricula.matriculaID}}</td>
+                            <td>{{matricula.disciplina}}</td>
+                            <td>{{matricula.professorResponsavel}}</td>
+                            <td>{{matricula.dataMatricula}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

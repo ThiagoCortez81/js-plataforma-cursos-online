@@ -1,0 +1,55 @@
+<div class="app-body">
+    <main class="main d-flex align-items-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 mx-auto">
+                    <div class="card-group text-center">
+                        <div class="card p-4">
+                            <div class="card-body">
+                                <div *ngIf="!isProfessor && !isAluno && !isAdmin">
+                                    <h2>Você é...</h2>
+                                    <div class="col-md-6 mx-auto">
+                                        <button type="button" class="btn btn-primary btn-lg w-100" (click)="setTipoLogin(true, false, false)">Administrador do sistema
+                                        </button>
+                                    </div>
+                                    <div class="col-md-6 mx-auto mt-1">
+                                        <button type="button" class="btn btn-info btn-lg w-100" (click)="setTipoLogin(false, true, false)">Professor</button>
+                                    </div>
+                                    <div class="col-md-6 mx-auto mt-1">
+                                        <button type="button" class="btn btn-secondary btn-lg w-100" (click)="setTipoLogin(false, false, true)">Aluno</button>
+                                    </div>
+                                </div>
+                                <form *ngIf="isAdmin || isAluno || isProfessor" method="POST" action="">
+                                    <h1>Login</h1>
+                                    <p class="text-muted">Entre em sua conta</p>
+                                    <div class="input-group mb-3">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="icon-user"></i></span>
+                                        </div>
+                                        <input type="text" class="form-control" placeholder="Usuário"
+                                               [(ngModel)]="login" [ngModelOptions]="{standalone: true}" autocomplete="usuario" required>
+                                    </div>
+                                    <div class="input-group mb-4">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text"><i class="icon-lock"></i></span>
+                                        </div>
+                                        <input type="password" class="form-control" placeholder="Senha"
+                                               [(ngModel)]="senha" [ngModelOptions]="{standalone: true}" autocomplete="senha" required>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-6 mx-auto">
+                                            <button type="button" class="btn btn-primary px-4" (click)="realizarLogin($event)">
+                                                <i class="fa fa-send"></i>
+                                                Login
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

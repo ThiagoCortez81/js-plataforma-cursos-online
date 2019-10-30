@@ -1,0 +1,48 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <b>Disciplinas</b>
+        </div>
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success" *ngIf="!idProfessor" (click)="adicionarDisciplina()"><i class="fa fa-plus-circle"></i>
+                        Adicionar nova disciplina
+                    </button>
+                </div>
+                <div class="col-md-12 mt-1 text-center">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col" width="10%">ID (#)</th>
+                            <th scope="col">Disciplina</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngIf="disciplinas == undefined || disciplinas.length == 0">
+                            <td colspan="4">Nenhum disciplina cadastrada</td>
+                        </tr>
+                        <tr *ngFor="let disciplina of disciplinas">
+                            <td>{{disciplina.DiscID}}</td>
+                            <td>{{disciplina.Nome}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success"
+                                        title="Editar disciplina {{disciplina.Nome}}" *ngIf="!idProfessor"
+                                        (click)="editDisciplina(disciplina.DiscID)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger"
+                                        title="Remover disciplina {{disciplina.Nome}}" *ngIf="!idProfessor"
+                                        (click)="excluirDisciplina(disciplina.DiscID)"><i class="fa fa-times"></i>
+                                </button>
+                                <button type="button" class="btn btn-outline-primary"
+                                        title="Questões da disciplina {{disciplina.Nome}}"
+                                        (click)="questoesDisciplina(disciplina.DiscID)"><i class="fa fa-question"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

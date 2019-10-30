@@ -1,0 +1,41 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <b>Professores</b>
+    </div>
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-12 text-right">
+          <button class="btn btn-success" (click)="adicionarProfessor()"><i class="fa fa-plus-circle"></i> Adicionar novo professor</button>
+        </div>
+        <div class="col-md-12 mt-1 text-center">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">ID (#)</th>
+              <th scope="col">Nome</th>
+              <th scope="col">Login</th>
+              <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngIf="professores == undefined || professores.length == 0">
+              <td colspan="4">Nenhum professor cadastrado</td>
+            </tr>
+            <tr *ngFor="let professor of professores">
+              <td>{{professor.id}}</td>
+              <td>{{professor.Nome}}</td>
+              <td>{{professor.Login}}</td>
+              <td>
+                <button type="button" class="btn btn-success" title="Editar professor {{professor.Nome}}" (click)="editProfessor(professor.id)"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger" title="Remover professor {{professor.Nome}}" (click)="excluirProfessor(professor.id)"><i class="fa fa-times"></i></button>
+                <button type="button" class="btn btn-outline-primary" title="Listar turmas do professor {{professor.Nome}}" (click)="turmasProfessor(professor.id)"><i class="fa fa-list"></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

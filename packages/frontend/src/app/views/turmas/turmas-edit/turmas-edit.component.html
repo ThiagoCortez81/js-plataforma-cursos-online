@@ -1,0 +1,35 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header" *ngIf="!isNew">
+      <b>Editando turma #{{turma.TurmaID}}</b>
+    </div>
+    <div class="card-header" *ngIf="isNew">
+      <b>Nova turma</b>
+    </div>
+    <div class="card-body">
+      <div class="input-group mb-3" *ngIf="!isNew">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-wrench"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="turma.TurmaID" placeholder="id" autocomplete="ra" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-user"></i></span>
+        </div>
+        <select class="form-control" [(ngModel)]="turma.profID" required>
+          <option *ngFor="let professor of turma.listProfessores" value="{{professor.id}}">{{professor.Nome}}</option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-user"></i></span>
+        </div>
+        <select class="form-control" [(ngModel)]="turma.DiscID" required>
+          <option *ngFor="let disciplina of turma.listDisciplinas" value="{{disciplina.DiscID}}">{{disciplina.Nome}}</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-block btn-success" (click)="salvarTurma()"><i class="fa fa-floppy-o"></i> Salvar</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <b>Turmas do professor ID #{{id}}</b>
+    </div>
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-12 text-center">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">Numero Turma (#)</th>
+              <th scope="col">Numero Disciplina (#)</th>
+              <th scope="col">Disciplina</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngIf="listTurmas == undefined || listTurmas.lenght == 0">
+              <td colspan="4">Professor não ministra nenhuma turma</td>
+            </tr>
+            <tr *ngFor="let turma of listTurmas">
+              <td>{{turma.TurmaID}}</td>
+              <td>{{turma.DiscID}}</td>
+              <td>{{turma.Nome}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

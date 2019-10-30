@@ -1,0 +1,46 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <b>Alunos</b>
+        </div>
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success" (click)="adicionarAluno()"><i class="fa fa-plus-circle"></i> Adicionar novo aluno</button>
+                </div>
+                <div class="col-md-12 mt-1 text-center">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Sobrenome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">Data de Nascimento</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngIf="alunos == undefined || alunos.length == 0">
+                            <td colspan="7">Nenhum aluno cadastrado</td>
+                        </tr>
+                        <tr *ngFor="let aluno of alunos">
+                            <td>{{aluno._id}}</td>
+                            <td>{{aluno.nome}}</td>
+                            <td>{{aluno.sobrenome}}</td>
+                            <td>{{aluno.email}}</td>
+                            <td>{{aluno.sexo}}</td>
+                            <td>{{aluno.dataNascimento}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success" title="Editar aluno {{aluno.nome}}" (click)="editAluno(aluno._id)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger" title="Remover aluno {{aluno.nome}}" (click)="excluirAluno(aluno._id)"><i class="fa fa-times"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

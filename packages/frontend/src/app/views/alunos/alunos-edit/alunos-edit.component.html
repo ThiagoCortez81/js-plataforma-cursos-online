@@ -1,0 +1,43 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header" *ngIf="!isNew">
+            <b>Editando aluno {{aluno.nome}}</b>
+        </div>
+        <div class="card-header" *ngIf="isNew">
+            <b>Novo aluno</b>
+        </div>
+        <div class="card-body">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-wrench"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="aluno._id" placeholder="RA" autocomplete="ra" required>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="aluno.nome"  placeholder="Nome" autocomplete="nome" required>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="aluno.sobrenome"  placeholder="Nome" autocomplete="nome" required>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-shield"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="aluno.email"  placeholder="Login" autocomplete="login" required>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-shield"></i></span>
+                </div>
+                <input type="password" class="form-control" [(ngModel)]="aluno.Senha" placeholder="Senha" autocomplete="senha" required>
+            </div>
+            <button type="button" class="btn btn-block btn-success" (click)="salvarAluno()"><i class="fa fa-floppy-o"></i> Salvar</button>
+        </div>
+    </div>
+</div>

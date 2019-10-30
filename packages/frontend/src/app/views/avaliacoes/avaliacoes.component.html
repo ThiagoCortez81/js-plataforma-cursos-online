@@ -1,0 +1,42 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header">
+      <b>Avaliações</b>
+    </div>
+    <div class="card-body">
+      <div class="row align-items-center">
+        <div class="col-md-12 text-right">
+          <button class="btn btn-success" (click)="adicionarAvaliacao()"><i class="fa fa-plus-circle"></i> Adicionar nova avaliação</button>
+        </div>
+        <div class="col-md-12 mt-1 text-center">
+          <table class="table">
+            <thead>
+            <tr>
+              <th scope="col">ID (#)</th>
+              <th scope="col">Responsável</th>
+              <th scope="col">Disciplina</th>
+              <th scope="col">Já respondida?</th>
+              <th scope="col">Ações</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngIf="avaliacoes == undefined || avaliacoes.length == 0">
+              <td colspan="5">Nenhuma avaliação cadastrada</td>
+            </tr>
+            <tr *ngFor="let avaliacao of avaliacoes">
+              <td>{{avaliacao.idAval}}</td>
+              <td>{{avaliacao.profResponsavel}}</td>
+              <td>{{avaliacao.disciplina}}</td>
+              <td>{{(avaliacao.jaRespondida == 0) ? 'Não' : 'Sim'}}</td>
+              <td>
+                <button type="button" class="btn btn-success" title="Verificar questões da avaliação {{avaliacao.idAval}}" [disabled]="avaliacao.jaRespondida == 1" (click)="addQuestao(avaliacao)"><i class="fa fa-edit"></i></button>
+                <button type="button" class="btn btn-danger" title="Remover avaliacao {{avaliacao.idAval}}" [disabled]="avaliacao.jaRespondida == 1" (click)="excluirAvaliacao(avaliacao.idAval)"><i class="fa fa-times"></i></button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

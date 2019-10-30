@@ -5,7 +5,7 @@ import {HttpClient} from "@angular/common/http";
     providedIn: 'root'
 })
 export class WebserviceService {
-    _URL_WEBSERVICES = "http://localhost:8080/api/";
+    _URL_WEBSERVICES = "/api/";
 
     constructor(private _http: HttpClient) {
     }

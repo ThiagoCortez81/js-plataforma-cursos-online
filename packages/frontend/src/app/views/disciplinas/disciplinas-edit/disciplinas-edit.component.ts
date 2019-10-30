@@ -8,11 +8,11 @@ import {HttpClient} from '@angular/common/http';
     styleUrls: ['./disciplinas-edit.component.scss']
 })
 export class DisciplinasEditComponent implements OnInit {
-    private disciplina = {
+    disciplina = {
         DiscID: '',
         Nome: ''
     };
-    private isNew = false;
+    isNew = false;
 
     constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {
     }

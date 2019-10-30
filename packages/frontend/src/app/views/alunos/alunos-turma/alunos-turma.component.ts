@@ -8,8 +8,8 @@ import {ActivatedRoute, Router} from '@angular/router';
   styleUrls: ['./alunos-turma.component.scss']
 })
 export class AlunosTurmaComponent implements OnInit {
-  private id;
-  private listMatriculas;
+  id;
+  listMatriculas;
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 

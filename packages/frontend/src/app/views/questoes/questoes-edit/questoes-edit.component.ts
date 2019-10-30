@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
     styleUrls: ['./questoes-edit.component.scss']
 })
 export class QuestoesEditComponent implements OnInit {
-    private questao = {
+    questao = {
         alt2: '',
         alt3: '',
         alt4: '',
@@ -17,7 +17,7 @@ export class QuestoesEditComponent implements OnInit {
         idDisc: '',
         idQues: ''
     };
-    private isNew = false;
+    isNew = false;
 
     constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {
     }

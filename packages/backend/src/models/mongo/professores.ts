@@ -10,5 +10,5 @@ export const Professores = new Schema({
     dataNascimento: String,
     telefone: String,
     endereco: String,
-    formacoes: [String]
+    formacoes: String
 });

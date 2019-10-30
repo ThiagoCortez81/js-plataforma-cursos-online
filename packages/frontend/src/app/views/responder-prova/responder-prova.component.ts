@@ -9,10 +9,10 @@ import {AuthenticationService} from '../../authentication.service';
   styleUrls: ['./responder-prova.component.scss']
 })
 export class ResponderProvaComponent implements OnInit {
-  private idAluno;
-  private idAval;
-  private idTurma;
-  private questoes;
+  idAluno;
+  idAval;
+  idTurma;
+  questoes;
   private listRespostas = [];
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private authenticator:AuthenticationService) {
   }

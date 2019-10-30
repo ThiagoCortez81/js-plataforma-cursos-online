@@ -9,7 +9,7 @@ import {WebserviceService} from "../../../services/webservice/webservice.service
     styleUrls: ['./alunos-edit.component.scss']
 })
 export class AlunosEditComponent implements OnInit {
-    private aluno = {
+    aluno = {
         dataNascimento: '',
         email: '',
         nome: '',
@@ -19,7 +19,7 @@ export class AlunosEditComponent implements OnInit {
         sobrenome: '',
         _id: ''
     };
-    private isNew = false;
+    isNew = false;
 
     constructor(private route: ActivatedRoute, private router: Router, private _ws: WebserviceService) {
     }

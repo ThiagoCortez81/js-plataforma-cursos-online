@@ -8,9 +8,9 @@ import {HttpClient} from '@angular/common/http';
     styleUrls: ['./turmas-matricular.component.scss']
 })
 export class TurmasMatricularComponent implements OnInit {
-    private id;
-    private listAlunos;
-    private alunoRA;
+    id;
+    listAlunos;
+    alunoRA;
 
     constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {
         this.id = +this.route.snapshot.paramMap.get('id');

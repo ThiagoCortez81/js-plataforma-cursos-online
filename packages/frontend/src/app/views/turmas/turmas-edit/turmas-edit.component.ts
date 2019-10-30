@@ -8,14 +8,14 @@ import {HttpClient} from '@angular/common/http';
     styleUrls: ['./turmas-edit.component.scss']
 })
 export class TurmasEditComponent implements OnInit {
-    private turma = {
+    turma = {
         TurmaID: '',
         profID: '',
         DiscID: '',
         listProfessores: [],
         listDisciplinas: []
     };
-    private isNew = false;
+    isNew = false;
 
     constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {
     }

@@ -48,7 +48,7 @@ export const navItems: NavData[] = [
     name: 'Professores',
     url: '/professores',
     icon: 'icon-user'
-  },
+  }/*,
   {
     name: 'Disciplinas',
     url: '/disciplinas',
@@ -73,5 +73,5 @@ export const navItems: NavData[] = [
     name: 'Minhas Turmas',
     url: '/minhas-turmas',
     icon: 'icon-puzzle'
-  }
+  }*/
 ];

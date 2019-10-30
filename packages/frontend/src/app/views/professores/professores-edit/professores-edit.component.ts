@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {HttpClient} from '@angular/common/http';
+import { WebserviceService } from '../../../services/webservice/webservice.service';
 
 @Component({
     selector: 'app-professores-edit',
@@ -9,7 +10,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class ProfessoresEditComponent implements OnInit {
 
-    private professor = {
+    professor = {
         dataNascimento: '',
         email: '',
         nome: '',
@@ -22,46 +23,43 @@ export class ProfessoresEditComponent implements OnInit {
         endereco: '',
         formacoes: ''
     };
-    private isNew = false;
+    isNew = false;
 
-    constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {
+    constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private _ws: WebserviceService) {
     }
 
     ngOnInit() {
-        const id = +this.route.snapshot.paramMap.get('id');
-        if (id == 0) {
+        const id = this.route.snapshot.paramMap.get('id');
+        if (id == null) {
             this.isNew = true;
         } else {
             this.getProfessor(id);
         }
     }
 
-    getProfessor(id) {
-        this.http.get(`http://localhost:5000/buscar-professor?id=${id}`, {}).subscribe((professor: any) => {
-            this.professor = professor;
-        });
+    async getProfessor(id) {
+        const professorObj: any = await this._ws.listarProfessores(id).toPromise();
+        console.log(professorObj);
+        delete professorObj.professor.senha;
+        this.professor = professorObj.professor;
     }
 
     salvarProfessor() {
-        /*
-
-        if (!this.isNew) {
-            this.http.post(`http://localhost:5000/edit-professor`, data).subscribe((res: any) => {
-                if (res.result == 'Ok!') {
+        if (this.isNew) {
+            this._ws.insertProfessor(this.professor).subscribe((res: any) => {
+                if (res.success)
                     this.router.navigate(['professores']);
-                } else {
-                    alert('Erro ao alterar professor. Tente novamente');
-                }
-            });
+                else
+                    alert(res.message);
+            })
         } else {
-            this.http.post(`http://localhost:5000/add-professor`, data).subscribe((res: any) => {
-                if (res.result == 'Ok!') {
+            this._ws.updateProfessor(this.professor).subscribe((res: any) => {
+                if (res.success)
                     this.router.navigate(['professores']);
-                } else {
-                    alert('Erro ao alterar professor. Tente novamente');
-                }
-            });
-        }*/
+                else
+                    alert(res.message);
+            })
+        }
     }
 
 }

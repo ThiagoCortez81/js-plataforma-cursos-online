@@ -8,10 +8,10 @@ import {ActivatedRoute, Router} from '@angular/router';
     styleUrls: ['./questoes.component.scss']
 })
 export class QuestoesComponent implements OnInit {
-    private questoes: Array<any>;
-    private idQuestao = '';
+    questoes: Array<any>;
+    idQuestao = '';
     private textoQuestao = '';
-    private idDisciplina;
+    idDisciplina;
 
     constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) {
     }

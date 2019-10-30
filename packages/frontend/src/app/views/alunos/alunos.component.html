@@ -31,7 +31,7 @@
                             <td>{{aluno.sobrenome}}</td>
                             <td>{{aluno.email}}</td>
                             <td>{{aluno.sexo}}</td>
-                            <td>{{aluno.dataNascimento}}</td>
+                            <td>{{cvtData(aluno.dataNascimento)}}</td>
                             <td>
                                 <button type="button" class="btn btn-success" title="Editar aluno {{aluno.nome}}" (click)="editAluno(aluno._id)"><i class="fa fa-edit"></i></button>
                                 <button type="button" class="btn btn-danger" title="Remover aluno {{aluno.nome}}" (click)="excluirAluno(aluno._id)"><i class="fa fa-times"></i></button>

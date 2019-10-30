@@ -1,0 +1,13 @@
+{
+  apps: [
+    {
+      name: "server-consumo-energetico",
+      script: "./packages/backend/dist/src/system.start.js",
+      node_args: "--max_old_space_size=512",
+      max_memory_restart: "512M",
+      env: {
+        SECRET: "sleocgrient"
+      }
+    }
+  ]
+}

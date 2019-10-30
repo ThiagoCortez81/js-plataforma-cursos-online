@@ -9,8 +9,8 @@ import {AuthenticationService} from '../../../authentication.service';
   styleUrls: ['./avaliacoes-nova.component.scss']
 })
 export class AvaliacoesNovaComponent implements OnInit {
-  private listTurmas;
-  private turmaSel;
+  listTurmas;
+  turmaSel;
   constructor(private http: HttpClient, private router: Router, private authenticator: AuthenticationService) { }
 
   ngOnInit() {

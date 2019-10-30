@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --prod --aot --buildOptimizer --commonChunk --vendorChunk --optimization --progress",
+    "build": "ng build",
     "build-w": "ng build --watch",
     "test": "ng test",
     "lint": "ng lint",

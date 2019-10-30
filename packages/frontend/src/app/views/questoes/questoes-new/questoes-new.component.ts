@@ -8,7 +8,7 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./questoes-new.component.scss']
 })
 export class QuestoesNewComponent implements OnInit {
-    private questao = {
+    questao = {
         alt2: '',
         alt3: '',
         alt4: '',

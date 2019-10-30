@@ -3,8 +3,8 @@
     <div class="card-header" *ngIf="!isNew">
       <b>Editando professor {{professor.nome}}</b>
     </div>
-    <div class="card-header" *ngIf="!isNew">
-      <b>Nvo professor</b>
+    <div class="card-header" *ngIf="isNew">
+      <b>Novo professor</b>
     </div>
     <div class="card-body">
       <div class="input-group mb-3" *ngIf="!isNew">
@@ -75,8 +75,7 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="icon-shield"></i></span>
         </div>
-        <ng-select2 [(ngModel)]="professor.formacoes" class="form-control" width="100%"></ng-select2>
-<!--        <input type="text" class="form-control" [(ngModel)]="professor.formacoes" placeholder="Formações (separar por virgula)" autocomplete="senha" required>-->
+        <input type="text" class="form-control" [(ngModel)]="professor.formacoes" placeholder="Formações (separar por virgula)" autocomplete="senha" required>
       </div>
       <button type="button" class="btn btn-block btn-success" (click)="salvarProfessor()"><i class="fa fa-floppy-o"></i> Salvar</button>
     </div>

@@ -8,10 +8,10 @@ import {ActivatedRoute, Router} from '@angular/router';
     styleUrls: ['./avaliacoes-questoes.component.scss']
 })
 export class AvaliacoesQuestoesComponent implements OnInit {
-    private idDisciplina;
-    private idAval;
-    private listQuestoes;
-    private questao = {
+    idDisciplina;
+    idAval;
+    listQuestoes;
+    questao = {
         alt2: '',
         alt3: '',
         alt4: '',

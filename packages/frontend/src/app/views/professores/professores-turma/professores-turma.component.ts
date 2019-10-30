@@ -8,8 +8,8 @@ import {HttpClient} from '@angular/common/http';
   styleUrls: ['./professores-turma.component.scss']
 })
 export class ProfessoresTurmaComponent implements OnInit {
-  private id;
-  private listTurmas;
+  id;
+  listTurmas;
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
 

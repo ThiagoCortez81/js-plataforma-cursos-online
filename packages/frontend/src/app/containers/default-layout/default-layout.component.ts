@@ -9,7 +9,7 @@ import {AuthenticationService} from '../../authentication.service';
   templateUrl: './default-layout.component.html'
 })
 export class DefaultLayoutComponent implements OnDestroy {
-  private authenticator = new AuthenticationService();
+  authenticator = new AuthenticationService();
   public navItems = navItems;
   public sidebarMinimized = true;
   private changes: MutationObserver;

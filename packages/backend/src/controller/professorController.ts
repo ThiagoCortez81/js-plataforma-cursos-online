@@ -23,7 +23,7 @@ class ProfessorController {
         const formacoes = professorBody.formacoes;
 
         // Verifico se todos os campos foram preenchidos
-        if (Utils.isStrValid(nome) && Utils.isStrValid(sobrenome) && Utils.isStrValid(email) && Utils.isStrValid(senha) && Utils.isStrValid(confirmarSenha) && Utils.isStrValid(sexo) && Utils.isStrValid(dataNascimento) && Utils.isStrValid(telefone) && Utils.isStrValid(endereco) && Utils.listTest(formacoes)) {
+        if (Utils.isStrValid(nome) && Utils.isStrValid(sobrenome) && Utils.isStrValid(email) && Utils.isStrValid(senha) && Utils.isStrValid(confirmarSenha) && Utils.isStrValid(sexo) && Utils.isStrValid(dataNascimento) && Utils.isStrValid(telefone) && Utils.isStrValid(endereco) && Utils.isStrValid(formacoes)) {
             // Verifico se a senha é igual a confirmação
             if (senha == confirmarSenha) {
                 // Criptografo a senha para salvar
@@ -106,7 +106,7 @@ class ProfessorController {
 
         let professorResponse;
 
-        if (Utils.isStrValid(id) && Utils.isStrValid(nome) && Utils.isStrValid(sobrenome) && Utils.isStrValid(email) && Utils.isStrValid(sexo) && Utils.isStrValid(dataNascimento) && Utils.isStrValid(telefone) && Utils.isStrValid(endereco) && Utils.listTest(formacoes)) {
+        if (Utils.isStrValid(id) && Utils.isStrValid(nome) && Utils.isStrValid(sobrenome) && Utils.isStrValid(email) && Utils.isStrValid(sexo) && Utils.isStrValid(dataNascimento) && Utils.isStrValid(telefone) && Utils.isStrValid(endereco) && Utils.isStrValid(formacoes)) {
             // Verifico se a senha é igual a confirmação
             if (Utils.isStrValid(senha)) {
                 if (Utils.isStrValid(confirmarSenha) && senha == confirmarSenha) {
@@ -173,7 +173,7 @@ class ProfessorController {
     }
 
     // Interação com o banco de dados
-    private static async newProfessor(nome: string, sobrenome: string, email: string, senha: string, sexo: string, dataNascimento: string, telefone: string, endereco: string, formacoes: string[]) {
+    private static async newProfessor(nome: string, sobrenome: string, email: string, senha: string, sexo: string, dataNascimento: string, telefone: string, endereco: string, formacoes: string) {
         const ProfessoresMongo = mongoose.model('professores', Professores);
 
         const professor = new ProfessoresMongo({
@@ -206,7 +206,7 @@ class ProfessorController {
         return await ProfessoresMongo.find({});
     }
 
-    private static async updateProfessor(id: string, nome: string, sobrenome: string, email: string, sexo: string, dataNascimento: string, telefone: string, endereco: string, formacoes: string[], senha?: string) {
+    private static async updateProfessor(id: string, nome: string, sobrenome: string, email: string, sexo: string, dataNascimento: string, telefone: string, endereco: string, formacoes: string, senha?: string) {
         const ProfessoresMongo = mongoose.model('professores', Professores);
 
         let professor = {

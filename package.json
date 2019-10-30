@@ -4,6 +4,7 @@
   "description": "WIP...",
   "main": "index.js",
   "scripts": {
+    "install": "(cd packages/backend && npm install) && (cd packages/frontend && npm install)",
     "start": "npm run client && npm run server",
     "server": "cd packages/backend && npm start",
     "client": "cd packages/frontend && npm run build"

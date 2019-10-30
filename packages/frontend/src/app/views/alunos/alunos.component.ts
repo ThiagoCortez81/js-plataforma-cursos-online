@@ -48,4 +48,12 @@ export class AlunosComponent implements OnInit {
         this.router.navigate(['alunos/turma', ra]);
     }
 
+    cvtData(data: string) {
+        const splittedDate = data.split('-');
+        if (splittedDate.length == 3)
+          return splittedDate[2] + "/" + splittedDate[1] + "/" + splittedDate[0];
+        else
+          return data;
+    }
+
 }

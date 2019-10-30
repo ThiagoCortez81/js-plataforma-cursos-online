@@ -9,11 +9,11 @@ import {AuthenticationService} from '../../../authentication.service';
     styleUrls: ['./minhas-turmas-disciplina.component.scss']
 })
 export class MinhasTurmasDisciplinaComponent implements OnInit {
-    private id;
-    private idAluno;
-    private idTurma;
-    private listProvas;
-    private mediaNota = 0;
+    id;
+    idAluno;
+    idTurma;
+    listProvas;
+    mediaNota = 0;
 
     constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private authenticator: AuthenticationService) {
     }

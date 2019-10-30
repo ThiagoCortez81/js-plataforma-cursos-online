@@ -9,7 +9,7 @@ import {WebserviceService} from "../../services/webservice/webservice.service";
   styleUrls: ['./professores.component.scss']
 })
 export class ProfessoresComponent implements OnInit {
-  private professores: any;
+  professores: any;
 
   constructor(private http: HttpClient, private router: Router, private _ws: WebserviceService) {
   }
@@ -36,20 +36,25 @@ export class ProfessoresComponent implements OnInit {
         id: id
       };
 
-      this.http.post(`http://localhost:5000/del-professor`, data).subscribe((res: any) => {
-        console.log(res.result);
-        console.log(res.result == 'Ok!');
-        if (res.result == 'Ok!'){
-          this.listProfessores();
-        } else {
-          window.alert("Erro ao remover professor. Tente novamente");
-        }
-      });
+      this._ws.deleteProfessor(id).subscribe((res:any) => {
+        if (res.success)
+            this.listProfessores();
+        else
+            alert(res.message);
+    });
     }
   }
 
   turmasProfessor(id) {
     this.router.navigate(['professores/turma', id]);
+  }
+
+  cvtData(data: string) {
+    const splittedDate = data.split('-');
+    if (splittedDate.length == 3)
+      return splittedDate[2] + "/" + splittedDate[1] + "/" + splittedDate[0];
+    else
+      return data;
   }
 
 }

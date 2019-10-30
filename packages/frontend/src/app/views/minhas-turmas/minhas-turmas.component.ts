@@ -9,8 +9,8 @@ import {AuthenticationService} from '../../authentication.service';
   styleUrls: ['./minhas-turmas.component.scss']
 })
 export class MinhasTurmasComponent implements OnInit {
-  private id;
-  private listMatriculas;
+  id;
+  listMatriculas;
 
   constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router, private authenticator:AuthenticationService) { }
 

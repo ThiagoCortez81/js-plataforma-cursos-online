@@ -30,6 +30,26 @@ export class WebserviceService {
         return this.doDelete(this.urlBuilder('aluno/delete'), {id: id})
     }
 
+    listarProfessores(id?: string) {
+        let params = undefined;
+        if (id != undefined)
+            params = {id: id};
+
+        return this.doGet(this.urlBuilder('professor/list'), params);
+    }
+
+    insertProfessor(payload: any) {
+        return this.doPost(this.urlBuilder('professor/insert'), payload);
+    }
+
+    updateProfessor(payload: any) {
+        return this.doPut(this.urlBuilder('professor/update'), payload)
+    }
+
+    deleteProfessor(id: string) {
+        return this.doDelete(this.urlBuilder('professor/delete'), {id: id})
+    }
+
     private urlBuilder(endpoint: string): string {
         return `${this._URL_WEBSERVICES}${endpoint}`;
     }

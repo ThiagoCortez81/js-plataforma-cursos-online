@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
+import {WebserviceService} from "../../services/webservice/webservice.service";
 
 @Component({
   selector: 'app-professores',
@@ -8,19 +9,17 @@ import {Router} from '@angular/router';
   styleUrls: ['./professores.component.scss']
 })
 export class ProfessoresComponent implements OnInit {
-  private professores: Array<any>;
+  private professores: any;
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, private _ws: WebserviceService) {
   }
 
   ngOnInit() {
     this.listProfessores();
   }
 
-  listProfessores() {
-    this.http.get('http://localhost:5000/list-professor', {}).subscribe((listProfessores: Array<any>) => {
-      this.professores = listProfessores;
-    });
+  async listProfessores() {
+    this.professores = await this._ws.listarProfessores().toPromise();
   }
 
   editProfessor(id) {

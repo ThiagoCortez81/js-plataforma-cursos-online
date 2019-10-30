@@ -10,10 +10,17 @@ import {HttpClient} from '@angular/common/http';
 export class ProfessoresEditComponent implements OnInit {
 
     private professor = {
-        id: '',
-        Nome: '',
-        Login: '',
-        Senha: ''
+        dataNascimento: '',
+        email: '',
+        nome: '',
+        senha: '',
+        confirmarSenha: '',
+        sexo: '',
+        sobrenome: '',
+        _id: '',
+        telefone: '',
+        endereco: '',
+        formacoes: ''
     };
     private isNew = false;
 
@@ -36,12 +43,7 @@ export class ProfessoresEditComponent implements OnInit {
     }
 
     salvarProfessor() {
-        const data = {
-            id: this.professor.id,
-            name: this.professor.Nome,
-            login: this.professor.Login,
-            senha: this.professor.Senha
-        };
+        /*
 
         if (!this.isNew) {
             this.http.post(`http://localhost:5000/edit-professor`, data).subscribe((res: any) => {
@@ -59,7 +61,7 @@ export class ProfessoresEditComponent implements OnInit {
                     alert('Erro ao alterar professor. Tente novamente');
                 }
             });
-        }
+        }*/
     }
 
 }

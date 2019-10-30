@@ -60,6 +60,9 @@ import { MinhasTurmasComponent } from './views/minhas-turmas/minhas-turmas.compo
 import { MinhasTurmasDisciplinaComponent } from './views/minhas-turmas/minhas-turmas-disciplina/minhas-turmas-disciplina.component';
 import { ResponderProvaComponent } from './views/responder-prova/responder-prova.component';
 import {LoginComponent} from './views/login/login.component';
+import { NgSelect2Module } from 'ng-select2';
+
+
 
 @NgModule({
     imports: [
@@ -76,7 +79,8 @@ import {LoginComponent} from './views/login/login.component';
         TabsModule.forRoot(),
         ChartsModule,
         HttpClientModule,
-        FormsModule
+        FormsModule,
+        NgSelect2Module
     ],
     declarations: [
         AppComponent,

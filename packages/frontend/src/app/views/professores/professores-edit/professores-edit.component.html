@@ -1,7 +1,7 @@
 <div class="animated fadeIn">
   <div class="card">
     <div class="card-header" *ngIf="!isNew">
-      <b>Editando professor {{professor.Nome}}</b>
+      <b>Editando professor {{professor.nome}}</b>
     </div>
     <div class="card-header" *ngIf="!isNew">
       <b>Nvo professor</b>
@@ -11,25 +11,72 @@
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="icon-wrench"></i></span>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="professor.id" placeholder="id" autocomplete="ra" required>
+        <input type="text" class="form-control" [(ngModel)]="professor._id" placeholder="RA" autocomplete="ra" disabled>
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="icon-user"></i></span>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="professor.Nome"  placeholder="Nome" autocomplete="nome" required>
+        <input type="text" class="form-control" [(ngModel)]="professor.nome"  placeholder="Nome" autocomplete="nome" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-user"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="professor.sobrenome"  placeholder="Sobrenome" autocomplete="nome" required>
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="icon-shield"></i></span>
         </div>
-        <input type="text" class="form-control" [(ngModel)]="professor.Login"  placeholder="Login" autocomplete="login" required>
+        <input type="text" class="form-control" [(ngModel)]="professor.email"  placeholder="Email" autocomplete="login" required>
       </div>
       <div class="input-group mb-3">
         <div class="input-group-prepend">
           <span class="input-group-text"><i class="icon-shield"></i></span>
         </div>
-        <input type="password" class="form-control" [(ngModel)]="professor.Senha" placeholder="Senha" autocomplete="senha" required>
+        <input type="password" class="form-control" [(ngModel)]="professor.senha" placeholder="Senha" autocomplete="senha">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-shield"></i></span>
+        </div>
+        <input type="password" class="form-control" [(ngModel)]="professor.confirmarSenha" placeholder="Confirmar senha" autocomplete="senha">
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-shield"></i></span>
+        </div>
+        <select class="form-control" [(ngModel)]="professor.sexo">
+          <option value="" selected>-- Selecione uma opção --</option>
+          <option value="M">M</option>
+          <option value="F">F</option>
+        </select>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-shield"></i></span>
+        </div>
+        <input type="date" class="form-control" [(ngModel)]="professor.dataNascimento" placeholder="Data de nascimento" autocomplete="senha" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-shield"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="professor.telefone" placeholder="Telefone" autocomplete="senha" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-shield"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="professor.endereco" placeholder="Endereço completo" autocomplete="senha" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-shield"></i></span>
+        </div>
+        <ng-select2 [(ngModel)]="professor.formacoes" class="form-control" width="100%"></ng-select2>
+<!--        <input type="text" class="form-control" [(ngModel)]="professor.formacoes" placeholder="Formações (separar por virgula)" autocomplete="senha" required>-->
       </div>
       <button type="button" class="btn btn-block btn-success" (click)="salvarProfessor()"><i class="fa fa-floppy-o"></i> Salvar</button>
     </div>

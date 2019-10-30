@@ -7,7 +7,9 @@
     "install": "(cd packages/backend && npm install) && (cd packages/frontend && npm install)",
     "start": "npm run client && npm run server",
     "server": "cd packages/backend && npm start",
-    "client": "cd packages/frontend && npm run build"
+    "server-prod": "cd packages/backend && npm run build",
+    "client": "cd packages/frontend && npm run build",
+    "prod": "npm run client && npm run server-prod && pm2 run pm2.json"
   },
   "repository": {
     "type": "git",

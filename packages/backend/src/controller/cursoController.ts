@@ -81,17 +81,19 @@ class CursoController {
         const id = req.params.id;
         const curso: any = await CursoController.listCurso(id);
         if (curso) {
-            curso['professorObj'] = await professorController.listProfessores(curso.idProfessor);
+            let professor = await professorController.listProfessores(curso.idProfessor);
 
             res.send({
                 success: true,
-                curso: curso
+                curso: curso,
+                professor: professor
             });
             return;
         }
         res.send({
             success: false,
-            curso: {}
+            curso: {},
+            professor: {}
         });
     }
 
@@ -109,11 +111,11 @@ class CursoController {
         const urlVideoaula = cursoRequestBody.urlVideoaula;
 
         // Verifico se todos os campos foram preenchidos
-        if (Utils.isStrValid(nome) && Utils.isStrValid(tema) && Utils.isStrValid(descricao) && Utils.isStrValid(valor) && Utils.isStrValid(duracao) && Utils.isStrValid(idProfessor) && Utils.isStrValid(urlVideoaula)) {
+        if (Utils.isStrValid(id) && Utils.isStrValid(nome) && Utils.isStrValid(tema) && Utils.isStrValid(descricao) && Utils.isStrValid(valor) && Utils.isStrValid(duracao) && Utils.isStrValid(idProfessor) && Utils.isStrValid(urlVideoaula)) {
             // Verifico se o id do professor é valido
             let professorObj: any = await professorController.listProfessores(idProfessor);
 
-            if (professorObj.length > 0) {
+            if (professorObj != null && professorObj != false) {
                 const cursoResponse = await CursoController.updateCurso(id, nome, tema, descricao, valor, duracao, idProfessor, urlVideoaula);
                 if (cursoResponse.n == cursoResponse.ok) {
                     response = {

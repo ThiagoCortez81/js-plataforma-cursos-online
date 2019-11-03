@@ -191,6 +191,21 @@ class ProfessorController {
         return await ProfessoresMongo.collection.insertOne(professor);
     }
 
+    public async listProfessores(id?: string) {
+        const ProfessoresMongo = mongoose.model('professores', Professores);
+
+        // Adiciono o id à busca
+        if (id != undefined && Utils.isStrValid(id)) {
+            // Se o lenght for menor que 24, não é um objectID diferente
+            if (id.length != 24)
+                return false;
+            // Listo professor com o id enviado
+            return await ProfessoresMongo.findById(id);
+        }
+        // Listo todos os professores
+        return await ProfessoresMongo.find({});
+    }
+
     private static async listProfessores(id?: string) {
         const ProfessoresMongo = mongoose.model('professores', Professores);
 

@@ -1,8 +1,8 @@
-import {Application, Router} from 'express';
-import userController from "../controller/alunoController";
-import {server} from "../system.start";
+import {Router} from 'express';
 import alunoController from "../controller/alunoController";
 import professorController from "../controller/professorController";
+import usuarioController from "../controller/usuarioController";
+import cursoController from "../controller/cursoController";
 
 class ApiRoutes {
 
@@ -17,10 +17,20 @@ class ApiRoutes {
             res.send({"message": "It works!"})
         });
 
+        this.mountUsuarioRoutes();
         this.mountAlunoRoutes();
         this.mountProfessorRoutes();
+        this.mountCursosRoutes();
 
         // this.router.post('/login', userController.loginUsuario);
+    }
+
+    private mountUsuarioRoutes() {
+        this.router.get('/usuario/list', usuarioController.list);
+        this.router.get('/usuario/list/:id', usuarioController.listById);
+        this.router.post('/usuario/insert', usuarioController.insert);
+        this.router.put('/usuario/update', usuarioController.update);
+        this.router.delete('/usuario/delete/:id', usuarioController.delete);
     }
 
     private mountAlunoRoutes() {
@@ -37,6 +47,14 @@ class ApiRoutes {
         this.router.post('/professor/insert', professorController.insert);
         this.router.put('/professor/update', professorController.update);
         this.router.delete('/professor/delete/:id', professorController.delete);
+    }
+
+    private mountCursosRoutes() {
+        this.router.get('/curso/list', cursoController.list);
+        this.router.get('/curso/list/:id', cursoController.listById);
+        this.router.post('/curso/insert', cursoController.insert);
+        this.router.put('/curso/update', cursoController.update);
+        this.router.delete('/curso/delete/:id', cursoController.delete);
     }
 }
 

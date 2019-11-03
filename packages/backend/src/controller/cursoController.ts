@@ -74,8 +74,6 @@ class CursoController {
             cursosMap.push({curso, professor});
         }
 
-        console.log(cursosMap);
-
         res.send(cursosMap);
     }
 

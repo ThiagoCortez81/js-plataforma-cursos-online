@@ -1,7 +1,7 @@
 {
   apps: [
     {
-      name: "server-consumo-energetico",
+      name: "nodejs-plataforma-de-cursos",
       script: "./packages/backend/dist/src/system.start.js",
       node_args: "--max_old_space_size=512",
       max_memory_restart: "512M",

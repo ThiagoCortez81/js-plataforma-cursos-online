@@ -3,49 +3,49 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {WebserviceService} from "../../services/webservice/webservice.service";
 
 @Component({
-    selector: 'app-alunos',
-    templateUrl: './alunos.component.html',
-    styleUrls: ['./alunos.component.scss']
+    selector: 'app-usuarios',
+    templateUrl: './usuarios.component.html',
+    styleUrls: ['./usuarios.component.scss']
 })
-export class AlunosComponent implements OnInit {
-    alunos: any;
+export class UsuariosComponent implements OnInit {
+    usuarios: any;
 
     constructor(private _ws: WebserviceService, private router: Router) {
     }
 
     ngOnInit() {
-        this.listAlunos();
+        this.listUsuarios();
     }
 
-    async listAlunos() {
-        this.alunos = await this._ws.listarAlunos().toPromise();
+    async listUsuarios() {
+        this.usuarios = await this._ws.listarUsuarios().toPromise();
     }
 
-    async editAluno(id: string) {
-        this.router.navigate(['alunos/edit', id]);
+    async editUsuario(id: string) {
+        this.router.navigate(['usuario/edit', id]);
     }
 
-    adicionarAluno() {
-        this.router.navigate(['alunos/add']);
+    adicionarUsuario() {
+        this.router.navigate(['usuario/add']);
     }
 
-    excluirAluno(id) {
-        if (confirm(`Deseja mesmo remover este aluno? (ID: ${id})`)){
+    excluirUsuario(id) {
+        if (confirm(`Deseja mesmo remover este usuario? (ID: ${id})`)){
             const data = {
                 RA: id
             };
 
-            this._ws.deleteAluno(id).subscribe((res:any) => {
+            this._ws.deleteUsuario(id).subscribe((res:any) => {
                 if (res.success)
-                    this.listAlunos();
+                    this.listUsuarios();
                 else
                     alert(res.message);
             });
         }
     }
 
-    turmasAluno(ra) {
-        this.router.navigate(['cursos/turma', ra]);
+    turmasUsuario(ra) {
+        this.router.navigate(['usuario/turma', ra]);
     }
 
     cvtData(data: string) {

@@ -61,6 +61,10 @@ import { MinhasTurmasDisciplinaComponent } from './views/minhas-turmas/minhas-tu
 import { ResponderProvaComponent } from './views/responder-prova/responder-prova.component';
 import {LoginComponent} from './views/login/login.component';
 import { NgSelect2Module } from 'ng-select2';
+import {UsuariosComponent} from "./views/usuarios/usuarios.component";
+import {UsuariosEditComponent} from "./views/usuarios/usuarios-edit/usuarios-edit.component";
+import { CursosComponent } from './views/cursos/cursos.component';
+import { CursosEditComponent } from './views/cursos/cursos-edit/cursos-edit.component';
 
 
 
@@ -86,6 +90,8 @@ import { NgSelect2Module } from 'ng-select2';
         AppComponent,
         ...APP_CONTAINERS,
         LoginComponent,
+        UsuariosComponent,
+        UsuariosEditComponent,
         AlunosComponent,
         AlunosEditComponent,
         AlunosTurmaComponent,
@@ -106,7 +112,9 @@ import { NgSelect2Module } from 'ng-select2';
         AvaliacoesQuestoesComponent,
         MinhasTurmasComponent,
         MinhasTurmasDisciplinaComponent,
-        ResponderProvaComponent
+        ResponderProvaComponent,
+        CursosComponent,
+        CursosEditComponent
     ],
     providers: [{
         provide: LocationStrategy,

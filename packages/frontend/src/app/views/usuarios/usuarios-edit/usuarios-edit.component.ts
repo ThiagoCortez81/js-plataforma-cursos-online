@@ -4,12 +4,12 @@ import {HttpClient} from '@angular/common/http';
 import {WebserviceService} from "../../../services/webservice/webservice.service";
 
 @Component({
-    selector: 'app-alunos-edit',
-    templateUrl: './alunos-edit.component.html',
-    styleUrls: ['./alunos-edit.component.scss']
+    selector: 'app-usuarios-edit',
+    templateUrl: './usuarios-edit.component.html',
+    styleUrls: ['./usuarios-edit.component.scss']
 })
-export class AlunosEditComponent implements OnInit {
-    aluno = {
+export class UsuariosEditComponent implements OnInit {
+    usuario = {
         dataNascimento: '',
         email: '',
         nome: '',
@@ -30,28 +30,28 @@ export class AlunosEditComponent implements OnInit {
         if (id == undefined) {
             this.isNew = true;
         } else {
-            this.getAluno(id);
+            this.getUsuario(id);
         }
     }
 
-    async getAluno(id) {
-        const alunoObj: any = await this._ws.listarAlunos(id).toPromise();
-        delete alunoObj.usuario.senha;
-        this.aluno = alunoObj.usuario;
+    async getUsuario(id) {
+        const usuarioObj: any = await this._ws.listarUsuarios(id).toPromise();
+        delete usuarioObj.usuario.senha;
+        this.usuario = usuarioObj.usuario;
     }
 
-    salvarAluno() {
+    salvarUsuario() {
         if (this.isNew) {
-            this._ws.insertAluno(this.aluno).subscribe((res: any) => {
+            this._ws.insertUsuario(this.usuario).subscribe((res: any) => {
                 if (res.success)
-                    this.router.navigate(['alunos']);
+                    this.router.navigate(['usuario']);
                 else
                     alert(res.message);
             })
         } else {
-            this._ws.updateAluno(this.aluno).subscribe((res: any) => {
+            this._ws.updateUsuario(this.usuario).subscribe((res: any) => {
                 if (res.success)
-                    this.router.navigate(['alunos']);
+                    this.router.navigate(['usuario']);
                 else
                     alert(res.message);
             })

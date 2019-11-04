@@ -1,0 +1,65 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header" *ngIf="!isNew">
+            <b>Editando usuario {{usuario.nome}}</b>
+        </div>
+        <div class="card-header" *ngIf="isNew">
+            <b>Novo usuario</b>
+        </div>
+        <div class="card-body">
+            <div class="input-group mb-3" *ngIf="!isNew">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-wrench"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="usuario._id" placeholder="RA" autocomplete="ra" disabled>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="usuario.nome" placeholder="Nome" autocomplete="nome" required>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-user"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="usuario.sobrenome" placeholder="Sobrenome" autocomplete="nome" required>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-shield"></i></span>
+                </div>
+                <input type="text" class="form-control" [(ngModel)]="usuario.email" placeholder="Email" autocomplete="login" required>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-shield"></i></span>
+                </div>
+                <input type="password" class="form-control" [(ngModel)]="usuario.senha" placeholder="Senha" autocomplete="senha">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-shield"></i></span>
+                </div>
+                <input type="password" class="form-control" [(ngModel)]="usuario.confirmarSenha" placeholder="Confirmar senha" autocomplete="senha">
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-shield"></i></span>
+                </div>
+                <select class="form-control" [(ngModel)]="usuario.sexo" required>
+                    <option value="">-- Selecione uma opção --</option>
+                    <option value="M">M</option>
+                    <option value="F">F</option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"><i class="icon-shield"></i></span>
+                </div>
+                <input type="date" class="form-control" [(ngModel)]="usuario.dataNascimento" placeholder="Data de nascimento" autocomplete="senha" required>
+            </div>
+            <button type="button" class="btn btn-block btn-success" (click)="salvarUsuario()"><i class="fa fa-floppy-o"></i> Salvar</button>
+        </div>
+    </div>
+</div>

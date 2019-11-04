@@ -27,6 +27,10 @@ import {AvaliacoesQuestoesComponent} from './views/avaliacoes/avaliacoes-questoe
 import {MinhasTurmasComponent} from './views/minhas-turmas/minhas-turmas.component';
 import {MinhasTurmasDisciplinaComponent} from './views/minhas-turmas/minhas-turmas-disciplina/minhas-turmas-disciplina.component';
 import {ResponderProvaComponent} from './views/responder-prova/responder-prova.component';
+import {UsuariosComponent} from "./views/usuarios/usuarios.component";
+import {UsuariosEditComponent} from "./views/usuarios/usuarios-edit/usuarios-edit.component";
+import {CursosComponent} from "./views/cursos/cursos.component";
+import {CursosEditComponent} from "./views/cursos/cursos-edit/cursos-edit.component";
 
 export const routes: Routes = [
     {
@@ -48,6 +52,21 @@ export const routes: Routes = [
             title: 'All'
         },
         children: [
+            {
+                path: 'usuario',
+                component: UsuariosComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'usuario/add',
+                component: UsuariosEditComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'usuario/edit/:id',
+                component: UsuariosEditComponent,
+                canActivate: [AuthGuardService]
+            },
             {
                 path: 'alunos',
                 component: AlunosComponent,
@@ -86,6 +105,21 @@ export const routes: Routes = [
             {
                 path: 'professores/turma/:id',
                 component: ProfessoresTurmaComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'cursos',
+                component: CursosComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'cursos/add',
+                component: CursosEditComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'cursos/edit/:id',
+                component: CursosEditComponent,
                 canActivate: [AuthGuardService]
             },
             {

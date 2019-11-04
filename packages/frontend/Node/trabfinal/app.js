@@ -25,9 +25,9 @@ app.get('/', function (req, res) {
     res.sendFile('index.html', {root: '.'})
 });
 
-app.get('/buscar-aluno', function (req, res) {
+app.get('/buscar-usuario', function (req, res) {
     id = req.query.id;
-    connection.query("SELECT * FROM alunos WHERE RA = ?", [id], function (error, rows) {
+    connection.query("SELECT * FROM cursos WHERE RA = ?", [id], function (error, rows) {
         res.json(rows[0]);
     });
 });
@@ -71,16 +71,16 @@ app.get('/buscar-turma', function (req, res) {
     });
 });
 
-app.get('/cadastrar-aluno', function (req, res) {
+app.get('/cadastrar-usuario', function (req, res) {
     res.sendFile('cadastrarAluno.html', {root: '.'})
 });
 
-app.get('/editar-aluno', function (req, res) {
+app.get('/editar-usuario', function (req, res) {
     res.sendFile('editarAluno.html', {root: '.'})
 });
 
-app.get('/excluir-aluno', function (req, res) {
-    res.sendFile('excluirAluno.html', {root: '.'})
+app.get('/excluir-usuario', function (req, res) {
+    res.sendFile('excluirCurso.html', {root: '.'})
 });
 
 app.get('/cadastrar-professor', function (req, res) {
@@ -95,8 +95,8 @@ app.get('/cadastrar-disciplina', function (req, res) {
     res.sendFile('editarDisciplina.html', {root: '.'})
 });
 
-app.post('/add-aluno', function (req, res) {
-    connection.query("INSERT INTO alunos(RA, Nome, Login, Senha) values(?, ?, ?, ?)", [req.body.RA, req.body.name, req.body.login, req.body.senha], function (err) {
+app.post('/add-usuario', function (req, res) {
+    connection.query("INSERT INTO cursos(RA, Nome, Login, Senha) values(?, ?, ?, ?)", [req.body.RA, req.body.name, req.body.login, req.body.senha], function (err) {
         if (!err)
             res.status(200).send({
                 result: "Ok!"
@@ -109,8 +109,8 @@ app.post('/add-aluno', function (req, res) {
 
 });
 
-app.post('/edit-aluno', function (req, res) {
-    connection.query("UPDATE alunos SET Nome=?, Login=?, Senha=? WHERE RA=?", [req.body.name, req.body.login, req.body.senha, req.body.RA], function (err) {
+app.post('/edit-usuario', function (req, res) {
+    connection.query("UPDATE cursos SET Nome=?, Login=?, Senha=? WHERE RA=?", [req.body.name, req.body.login, req.body.senha, req.body.RA], function (err) {
         if (!err)
             res.status(200).send({
                 result: "Ok!"
@@ -123,8 +123,8 @@ app.post('/edit-aluno', function (req, res) {
 
 });
 
-app.get('/list-aluno', function (req, res) {
-    connection.query("SELECT * FROM alunos", function (err, results, fields) {
+app.get('/list-usuario', function (req, res) {
+    connection.query("SELECT * FROM cursos", function (err, results, fields) {
         if (!err) {
             res.json(results);
         } else
@@ -135,8 +135,8 @@ app.get('/list-aluno', function (req, res) {
 
 });
 
-app.post('/del-aluno', function (req, res) {
-    connection.query("DELETE FROM alunos WHERE RA=?", [req.body.RA], function (err) {
+app.post('/del-usuario', function (req, res) {
+    connection.query("DELETE FROM cursos WHERE RA=?", [req.body.RA], function (err) {
         if (!err)
             res.status(200).send({
                 result: "Ok!"
@@ -369,7 +369,7 @@ app.post('/del-matricula', function (req, res) {
 });
 
 app.get('/list-matriculas-turma', function (req, res) {
-    connection.query("SELECT m.matriculaID AS matriculaID, d.Nome AS disciplina, a.RA AS alunoRA, a.Nome AS alunoNome, DATE_FORMAT(STR_TO_DATE(m.dataMatricula, '%Y-%m-%d'), '%d/%m/%Y')  AS dataMatricula FROM matricula m JOIN turmas t ON t.TurmaID = m.turmaID JOIN disciplina d ON d.DiscID = t.DiscID JOIN alunos a ON m.alunoRA = a.RA WHERE m.turmaID = ?", [req.query.id], function (err, results) {
+    connection.query("SELECT m.matriculaID AS matriculaID, d.Nome AS disciplina, a.RA AS alunoRA, a.Nome AS alunoNome, DATE_FORMAT(STR_TO_DATE(m.dataMatricula, '%Y-%m-%d'), '%d/%m/%Y')  AS dataMatricula FROM matricula m JOIN turmas t ON t.TurmaID = m.turmaID JOIN disciplina d ON d.DiscID = t.DiscID JOIN cursos a ON m.alunoRA = a.RA WHERE m.turmaID = ?", [req.query.id], function (err, results) {
         if (!err) {
             let countResults = 0;
             let resultsFinal = [];
@@ -395,7 +395,7 @@ app.get('/list-matriculas-turma', function (req, res) {
     })
 });
 
-app.get('/list-matriculas-aluno', function (req, res) {
+app.get('/list-matriculas-usuario', function (req, res) {
     connection.query("SELECT m.matriculaID AS matriculaID, m.turmaID AS turmaID, d.Nome AS disciplina, p.Nome AS professorResponsavel, DATE_FORMAT(STR_TO_DATE(m.dataMatricula, '%Y-%m-%d'), '%d/%m/%Y')  AS dataMatricula FROM matricula m JOIN turmas t ON t.TurmaID = m.turmaID JOIN disciplina d ON d.DiscID = t.DiscID JOIN professores p ON t.profID = p.id WHERE m.alunoRA = ?", [req.query.id], function (err, results) {
         if (!err)
             res.status(200).json(results);
@@ -444,7 +444,7 @@ app.post('/login-funcAdm', function (req, res) {
 });
 
 app.post('/login-Aluno', function (req, res) {
-    connection.query("SELECT * FROM alunos WHERE Login = ? AND Senha = ?", [req.body.login, req.body.senha], function (err, results) {
+    connection.query("SELECT * FROM cursos WHERE Login = ? AND Senha = ?", [req.body.login, req.body.senha], function (err, results) {
         if (!err)
             if (results[0] != null) {
                 const usuario = results[0];

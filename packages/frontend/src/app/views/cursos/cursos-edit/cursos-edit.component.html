@@ -1,0 +1,64 @@
+<div class="animated fadeIn">
+  <div class="card">
+    <div class="card-header" *ngIf="!isNew">
+      <b>Editando aluno {{curso.nome}}</b>
+    </div>
+    <div class="card-header" *ngIf="isNew">
+      <b>Novo aluno</b>
+    </div>
+    <div class="card-body">
+      <div class="input-group mb-3" *ngIf="!isNew">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-wrench"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="curso._id" placeholder="ID do curso" autocomplete="ra" disabled>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-user"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="curso.nome" placeholder="Nome" autocomplete="nome" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-question"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="curso.tema" placeholder="Tema" autocomplete="nome" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-list"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="curso.descricao" placeholder="Descrição" autocomplete="nome" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-credit-card"></i></span>
+        </div>
+        <input type="number" class="form-control" [(ngModel)]="curso.valor" placeholder="Valor" autocomplete="nome" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-clock"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="curso.duracao" placeholder="Duração HH:MM" autocomplete="nome" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-social-youtube"></i></span>
+        </div>
+        <input type="text" class="form-control" [(ngModel)]="curso.urlVideoaula" placeholder="URL do Youtube" autocomplete="nome" required>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><i class="icon-user"></i></span>
+        </div>
+        <select class="form-control" [(ngModel)]="curso.idProfessor" required>
+          <option value=""> -- Selecione um professor -- </option>
+          <option *ngFor="let professor of professores" [value]="professor._id">{{professor.nome}}</option>
+        </select>
+      </div>
+      <button type="button" class="btn btn-block btn-success" (click)="salvarCurso()"><i class="fa fa-floppy-o"></i> Salvar</button>
+    </div>
+  </div>
+</div>

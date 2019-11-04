@@ -5,9 +5,30 @@ import {HttpClient} from "@angular/common/http";
     providedIn: 'root'
 })
 export class WebserviceService {
-    _URL_WEBSERVICES = "/api/";
+    _URL_WEBSERVICES = "http://localhost:8080/api/";
+    // _URL_WEBSERVICES = "/api/";
 
     constructor(private _http: HttpClient) {
+    }
+
+    listarUsuarios(id?: string) {
+        let params = undefined;
+        if (id != undefined)
+            params = {id: id};
+
+        return this.doGet(this.urlBuilder('usuario/list'), params);
+    }
+
+    insertUsuario(payload: any) {
+        return this.doPost(this.urlBuilder('usuario/insert'), payload);
+    }
+
+    updateUsuario(payload: any) {
+        return this.doPut(this.urlBuilder('usuario/update'), payload)
+    }
+
+    deleteUsuario(id: string) {
+        return this.doDelete(this.urlBuilder('usuario/delete'), {id: id})
     }
 
     listarAlunos(id?: string) {
@@ -15,19 +36,19 @@ export class WebserviceService {
         if (id != undefined)
             params = {id: id};
 
-        return this.doGet(this.urlBuilder('aluno/list'), params);
+        return this.doGet(this.urlBuilder('usuario/list'), params);
     }
 
     insertAluno(payload: any) {
-        return this.doPost(this.urlBuilder('aluno/insert'), payload);
+        return this.doPost(this.urlBuilder('usuario/insert'), payload);
     }
 
     updateAluno(payload: any) {
-        return this.doPut(this.urlBuilder('aluno/update'), payload)
+        return this.doPut(this.urlBuilder('usuario/update'), payload)
     }
 
     deleteAluno(id: string) {
-        return this.doDelete(this.urlBuilder('aluno/delete'), {id: id})
+        return this.doDelete(this.urlBuilder('usuario/delete'), {id: id})
     }
 
     listarProfessores(id?: string) {
@@ -48,6 +69,26 @@ export class WebserviceService {
 
     deleteProfessor(id: string) {
         return this.doDelete(this.urlBuilder('professor/delete'), {id: id})
+    }
+
+    listarCursos(id?: string) {
+        let params = undefined;
+        if (id != undefined)
+            params = {id: id};
+
+        return this.doGet(this.urlBuilder('curso/list'), params);
+    }
+
+    insertCursos(payload: any) {
+        return this.doPost(this.urlBuilder('curso/insert'), payload);
+    }
+
+    updateCursos(payload: any) {
+        return this.doPut(this.urlBuilder('curso/update'), payload)
+    }
+
+    deleteCursos(id: string) {
+        return this.doDelete(this.urlBuilder('curso/delete'), {id: id})
     }
 
     private urlBuilder(endpoint: string): string {

@@ -40,6 +40,11 @@ export const navItems: NavData[] = [
     icon: 'icon-speedometer'
   },
   {
+    name: 'Usuários',
+    url: '/usuario',
+    icon: 'icon-wrench'
+  },
+  {
     name: 'Alunos',
     url: '/alunos',
     icon: 'icon-user'
@@ -48,12 +53,13 @@ export const navItems: NavData[] = [
     name: 'Professores',
     url: '/professores',
     icon: 'icon-user'
-  }/*,
-  {
-    name: 'Disciplinas',
-    url: '/disciplinas',
-    icon: 'icon-wrench'
   },
+  {
+    name: 'Cursos',
+    url: '/cursos',
+    icon: 'icon-puzzle'
+  }
+  /*
   {
     name: 'Minhas disciplinas',
     url: '/minhas-disciplinas',

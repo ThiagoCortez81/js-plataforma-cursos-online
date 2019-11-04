@@ -165,7 +165,7 @@ class UsuarioController {
 
     // Interação com o banco de dados
     private static async newUsuario(nome: string, sobrenome: string, email: string, senha: string, sexo: string, dataNascimento: string) {
-        const UsuariosMongo = mongoose.model('usuarios', Usuarios);
+        const UsuariosMongo = mongoose.model('usuario', Usuarios);
 
         const usuario = new UsuariosMongo({
             nome: nome,
@@ -180,22 +180,22 @@ class UsuarioController {
     }
 
     private static async listUsuario(id?: string) {
-        const UsuariosMongo = mongoose.model('usuarios', Usuarios);
+        const UsuariosMongo = mongoose.model('usuario', Usuarios);
 
         // Adiciono o id à busca
         if (id != undefined && Utils.isStrValid(id)) {
             // Se o lenght for menor que 24, não é um objectID diferente
             if (id.length != 24)
                 return false;
-            // Listo aluno com o id enviado
+            // Listo usuario com o id enviado
             return await UsuariosMongo.findById(id);
         }
-        // Listo todos os alunos
+        // Listo todos os cursos
         return await UsuariosMongo.find({});
     }
 
     private static async updateUsuario(id: string, nome: string, sobrenome: string, email: string, sexo: string, dataNascimento: string, senha?: string) {
-        const UsuariosMongo = mongoose.model('usuarios', Usuarios);
+        const UsuariosMongo = mongoose.model('usuario', Usuarios);
 
         let usuario = {
             nome: nome,
@@ -213,11 +213,11 @@ class UsuarioController {
     }
 
     private static async deleteUsuario(id: string) {
-        const UsuariosMongo = mongoose.model('usuarios', Usuarios);
+        const UsuariosMongo = mongoose.model('usuario', Usuarios);
 
         if (id.length != 24)
             return false;
-        // Apago o aluno
+        // Apago o usuario
         return await UsuariosMongo.findByIdAndDelete(id);
     }
 }

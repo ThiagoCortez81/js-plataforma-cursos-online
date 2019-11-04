@@ -1,0 +1,46 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <b>Alunos</b>
+        </div>
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-12 text-right">
+                    <button class="btn btn-success" (click)="adicionarUsuario()"><i class="fa fa-plus-circle"></i> Adicionar novo usuario</button>
+                </div>
+                <div class="col-md-12 mt-1 text-center">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Sobrenome</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Sexo</th>
+                            <th scope="col">Data de Nascimento</th>
+                            <th scope="col">Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr *ngIf="usuarios == undefined || usuarios.length == 0">
+                            <td colspan="7">Nenhum usuario cadastrado</td>
+                        </tr>
+                        <tr *ngFor="let usuario of usuarios">
+                            <td>{{usuario._id}}</td>
+                            <td>{{usuario.nome}}</td>
+                            <td>{{usuario.sobrenome}}</td>
+                            <td>{{usuario.email}}</td>
+                            <td>{{usuario.sexo}}</td>
+                            <td>{{cvtData(usuario.dataNascimento)}}</td>
+                            <td>
+                                <button type="button" class="btn btn-success" title="Editar aluno {{usuario.nome}}" (click)="editUsuario(usuario._id)"><i class="fa fa-edit"></i></button>
+                                <button type="button" class="btn btn-danger" title="Remover aluno {{usuario.nome}}" (click)="excluirUsuario(usuario._id)"><i class="fa fa-times"></i></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

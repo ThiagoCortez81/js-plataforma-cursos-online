@@ -116,7 +116,7 @@ class AlunoController {
                     } else {
                         response = {
                             success: false,
-                            message: 'Erro ao atualizar aluno.'
+                            message: 'Erro ao atualizar usuario.'
                         };
                     }
                 } else {
@@ -135,7 +135,7 @@ class AlunoController {
                 } else {
                     response = {
                         success: false,
-                        message: 'Erro ao atualizar aluno.'
+                        message: 'Erro ao atualizar usuario.'
                     };
                 }
             }
@@ -165,7 +165,7 @@ class AlunoController {
 
     // Interação com o banco de dados
     private static async newAluno(nome: string, sobrenome: string, email: string, senha: string, sexo: string, dataNascimento: string) {
-        const AlunosMongo = mongoose.model('alunos', Alunos);
+        const AlunosMongo = mongoose.model('cursos', Alunos);
 
         const aluno = new AlunosMongo({
             nome: nome,
@@ -180,22 +180,22 @@ class AlunoController {
     }
 
     private static async listAlunos(id?: string) {
-        const AlunosMongo = mongoose.model('alunos', Alunos);
+        const AlunosMongo = mongoose.model('cursos', Alunos);
 
         // Adiciono o id à busca
         if (id != undefined && Utils.isStrValid(id)) {
             // Se o lenght for menor que 24, não é um objectID diferente
             if (id.length != 24)
                 return false;
-            // Listo aluno com o id enviado
+            // Listo usuario com o id enviado
             return await AlunosMongo.findById(id);
         }
-        // Listo todos os alunos
+        // Listo todos os cursos
         return await AlunosMongo.find({});
     }
 
     private static async updateAluno(id: string, nome: string, sobrenome: string, email: string, sexo: string, dataNascimento: string, senha?: string) {
-        const AlunosMongo = mongoose.model('alunos', Alunos);
+        const AlunosMongo = mongoose.model('cursos', Alunos);
 
         let aluno = {
             nome: nome,
@@ -213,11 +213,11 @@ class AlunoController {
     }
 
     private static async deleteAluno(id: string) {
-        const AlunosMongo = mongoose.model('alunos', Alunos);
+        const AlunosMongo = mongoose.model('cursos', Alunos);
 
         if (id.length != 24)
             return false;
-        // Apago o aluno
+        // Apago o usuario
         return await AlunosMongo.findByIdAndDelete(id);
     }
 }

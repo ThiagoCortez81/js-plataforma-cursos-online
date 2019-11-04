@@ -183,10 +183,10 @@ class CursoController {
             // Se o lenght for menor que 24, não é um objectID diferente
             if (id.length != 24)
                 return false;
-            // Listo aluno com o id enviado
+            // Listo usuario com o id enviado
             return await CursosMongo.findById(id);
         }
-        // Listo todos os alunos
+        // Listo todos os cursos
         return await CursosMongo.find({});
     }
 
@@ -211,7 +211,7 @@ class CursoController {
 
         if (id.length != 24)
             return false;
-        // Apago o aluno
+        // Apago o usuario
         return await CursosMongo.findByIdAndDelete(id);
     }
 }

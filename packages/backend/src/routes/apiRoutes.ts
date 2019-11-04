@@ -34,11 +34,11 @@ class ApiRoutes {
     }
 
     private mountAlunoRoutes() {
-        this.router.get('/aluno/list', alunoController.list);
-        this.router.get('/aluno/list/:id', alunoController.listById);
-        this.router.post('/aluno/insert', alunoController.insert);
-        this.router.put('/aluno/update', alunoController.update);
-        this.router.delete('/aluno/delete/:id', alunoController.delete);
+        this.router.get('/usuario/list', alunoController.list);
+        this.router.get('/usuario/list/:id', alunoController.listById);
+        this.router.post('/usuario/insert', alunoController.insert);
+        this.router.put('/usuario/update', alunoController.update);
+        this.router.delete('/usuario/delete/:id', alunoController.delete);
     }
 
     private mountProfessorRoutes() {

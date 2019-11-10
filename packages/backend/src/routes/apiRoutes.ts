@@ -4,6 +4,7 @@ import professorController from "../controller/professorController";
 import usuarioController from "../controller/usuarioController";
 import cursoController from "../controller/cursoController";
 import matriculaController from "../controller/matriculaController";
+import relatorioController from "../controller/relatorioController";
 
 class ApiRoutes {
 
@@ -69,7 +70,7 @@ class ApiRoutes {
     }
 
     private mountRelatorioRoutes() {
-        this.router.get('/relatorio/relatorio-aluno-curso', matriculaController.list);
+        this.router.get('/relatorio/relatorio-aluno-curso', relatorioController.relatorioAlunoCurso);
     }
 }
 

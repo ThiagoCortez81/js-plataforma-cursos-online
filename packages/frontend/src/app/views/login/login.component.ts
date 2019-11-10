@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { AuthenticationService } from '../../authentication.service';
+import {Component} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
+import {AuthenticationService} from '../../authentication.service';
+import {WebserviceService} from "../../services/webservice/webservice.service";
 
 @Component({
     selector: 'app-dashboard',
@@ -14,7 +15,8 @@ export class LoginComponent {
     login;
     senha;
 
-    constructor(private http: HttpClient, private router: Router, private authenticator: AuthenticationService) {
+    constructor(private _ws: WebserviceService, private router: Router, private authenticator: AuthenticationService) {
+        localStorage.setItem('aluno', null);
     }
 
     setTipoLogin(isAdmin, isProfessor, isAluno) {
@@ -33,7 +35,17 @@ export class LoginComponent {
         }
     }
 
-    realizarLogin() {
+    async realizarLogin() {
+        if (this.isAluno) {
+            const loginDataResponse = await this._ws.loginAluno({login: this.login, senha: this.senha}).toPromise();
+            const loginData = loginDataResponse[0];
+            if (loginData != null) {
+                localStorage.setItem('aluno', JSON.stringify(loginData));
+            } else {
+                alert('Combinação email/senha não conferem.')
+            }
+        }
+
         console.log('realizarLogin');
         window.location.href = '/#/dashboard';
         window.location.reload();

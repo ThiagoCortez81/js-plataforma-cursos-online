@@ -42,22 +42,38 @@ export const navItems: NavData[] = [
   {
     name: 'Usuários',
     url: '/usuario',
-    icon: 'icon-wrench'
+    icon: 'icon-wrench',
+    class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
   },
   {
     name: 'Alunos',
     url: '/alunos',
-    icon: 'icon-user'
+    icon: 'icon-user',
+    class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
   },
   {
     name: 'Professores',
     url: '/professores',
-    icon: 'icon-user'
+    icon: 'icon-user',
+    class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
   },
   {
     name: 'Cursos',
     url: '/cursos',
-    icon: 'icon-puzzle'
+    icon: 'icon-puzzle',
+    class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
+  },
+  {
+    name: 'Minhas Matrículas',
+    url: '/matriculas',
+    icon: 'icon-question',
+    class: ((localStorage.getItem('aluno') != "null") ? '' : 'd-none')
+  },
+  {
+    name: 'Relatório de Aluno Por Curso',
+    url: '/relatorio-aluno-curso',
+    icon: 'icon-puzzle',
+    class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
   }
   /*
   {

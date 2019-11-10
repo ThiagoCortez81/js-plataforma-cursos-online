@@ -31,6 +31,10 @@ export class WebserviceService {
         return this.doDelete(this.urlBuilder('usuario/delete'), {id: id})
     }
 
+    loginAluno(payload: any) {
+        return this.doPost(this.urlBuilder('aluno/login'), payload);
+    }
+
     listarAlunos(id?: string) {
         let params = undefined;
         if (id != undefined)
@@ -89,6 +93,28 @@ export class WebserviceService {
 
     deleteCursos(id: string) {
         return this.doDelete(this.urlBuilder('curso/delete'), {id: id})
+    }
+
+    listarMatriculas(id?: string) {
+        let params = undefined;
+        if (id != undefined)
+            params = {id: id};
+
+        return this.doGet(this.urlBuilder('matricula/list'), params);
+    }
+
+    updateMatriculas(payload: any) {
+        return this.doPut(this.urlBuilder('matricula/update'), payload);
+    }
+
+    insertMatriculas(payload: any) {
+        return this.doPost(this.urlBuilder('matricula/insert'), payload);
+    }
+
+    listarMatriculasPorAluno(id: string) {
+        let params = {id: id};
+
+        return this.doGet(this.urlBuilder('matricula/listByAluno'), params);
     }
 
     private urlBuilder(endpoint: string): string {

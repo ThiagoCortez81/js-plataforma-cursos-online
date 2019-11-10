@@ -24,6 +24,8 @@ export class DefaultLayoutComponent implements OnDestroy {
       attributes: true,
       attributeFilter: ['class']
     });
+
+    window.dispatchEvent(new Event('resize'));
   }
 
   ngOnDestroy(): void {
@@ -33,5 +35,9 @@ export class DefaultLayoutComponent implements OnDestroy {
   logout(){
     this.authenticator.setPerfil(null);
     window.location.href = "/";
+  }
+
+  getWindow(): any {
+    return window;
   }
 }

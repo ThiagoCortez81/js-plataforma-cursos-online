@@ -22,6 +22,7 @@
       <!-- Breadcrumb Menu-->
       <li class="breadcrumb-menu d-md-down-none">
         <div class="btn-group" role="group" aria-label="Button group with nested dropdown">
+          <button class="btn btn-lg btn-success" (click)="getWindow().print()" *ngIf="getWindow().location.href.indexOf('relatorio-aluno-curso') != -1" style="color: #FFF;"><i class="fa fa-print"></i> Imprimir</button>
           <a class="btn" [routerLink]="['/dashboard']"><i class="icon-graph"></i> &nbsp;Dashboard</a>
         </div>
       </li>

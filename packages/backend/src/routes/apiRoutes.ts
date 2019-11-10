@@ -40,6 +40,7 @@ class ApiRoutes {
     private mountAlunoRoutes() {
         this.router.get('/aluno/list', alunoController.list);
         this.router.get('/aluno/list/:id', alunoController.listById);
+        this.router.post('/aluno/login', alunoController.login);
         this.router.post('/aluno/insert', alunoController.insert);
         this.router.put('/aluno/update', alunoController.update);
         this.router.delete('/aluno/delete/:id', alunoController.delete);
@@ -64,6 +65,7 @@ class ApiRoutes {
     private mountMatriculasRoutes() {
         this.router.get('/matricula/list', matriculaController.list);
         this.router.get('/matricula/list/:id', matriculaController.listById);
+        this.router.get('/matricula/listByAluno/:id', matriculaController.listByIdAluno);
         this.router.post('/matricula/insert', matriculaController.insert);
         this.router.put('/matricula/update', matriculaController.update);
         this.router.delete('/matricula/delete/:id', matriculaController.delete);

@@ -107,6 +107,39 @@ class MatriculaController {
         });
     }
 
+    public async listByIdAluno(req: Request, res: Response) {
+        const id = req.params.id;
+        const matriculas: any = await MatriculaController.listMatriculaPorAluno(id);
+        const listMatriculas: any[] = [];
+
+        if (matriculas) {
+            for (let matricula of matriculas) {
+                let aluno: any = await AlunoController.listAlunos(matricula.aluno);
+                let curso: any = await cursoController.listByIdInternal(matricula.curso);
+                let professor = null;
+                if (curso != null)
+                    professor = await professorController.listProfessores(curso.idProfessor);
+
+                listMatriculas.push({
+                    matricula: matricula,
+                    aluno: aluno,
+                    curso: curso,
+                    professor: professor
+                })
+            }
+
+            res.send({
+                success: true,
+                listMatriculas: listMatriculas
+            });
+            return;
+        }
+        res.send({
+            success: false,
+            listMatriculas: []
+        });
+    }
+
     public async update(req: Request, res: Response) {
         let response = {};
 
@@ -196,6 +229,11 @@ class MatriculaController {
         }
         // Listo todos as matriculas
         return await MatriculasMongo.find({});
+    }
+
+    public static async listMatriculaPorAluno(id: string) {
+        const MatriculasMongo = mongoose.model('matriculas', Matriculas);
+        return await MatriculasMongo.find({aluno: id});
     }
 
     private static async updateCurso(id: string, dataFinalizacao: string | null, emAndamento: Boolean, aluno: string, curso: string) {

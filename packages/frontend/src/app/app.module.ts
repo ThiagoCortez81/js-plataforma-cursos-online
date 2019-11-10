@@ -65,6 +65,9 @@ import {UsuariosComponent} from "./views/usuarios/usuarios.component";
 import {UsuariosEditComponent} from "./views/usuarios/usuarios-edit/usuarios-edit.component";
 import { CursosComponent } from './views/cursos/cursos.component';
 import { CursosEditComponent } from './views/cursos/cursos-edit/cursos-edit.component';
+import { RelatorioAlunoCursoComponent } from './views/relatorio-aluno-curso/relatorio-aluno-curso.component';
+import { MatriculasComponent } from './views/matriculas/matriculas.component';
+import { VerAulaComponent } from './views/matriculas/ver-aula/ver-aula.component';
 
 
 
@@ -114,7 +117,10 @@ import { CursosEditComponent } from './views/cursos/cursos-edit/cursos-edit.comp
         MinhasTurmasDisciplinaComponent,
         ResponderProvaComponent,
         CursosComponent,
-        CursosEditComponent
+        CursosEditComponent,
+        RelatorioAlunoCursoComponent,
+        MatriculasComponent,
+        VerAulaComponent
     ],
     providers: [{
         provide: LocationStrategy,

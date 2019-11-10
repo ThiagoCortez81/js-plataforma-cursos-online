@@ -31,6 +31,9 @@ import {UsuariosComponent} from "./views/usuarios/usuarios.component";
 import {UsuariosEditComponent} from "./views/usuarios/usuarios-edit/usuarios-edit.component";
 import {CursosComponent} from "./views/cursos/cursos.component";
 import {CursosEditComponent} from "./views/cursos/cursos-edit/cursos-edit.component";
+import {RelatorioAlunoCursoComponent} from "./views/relatorio-aluno-curso/relatorio-aluno-curso.component";
+import {MatriculasComponent} from "./views/matriculas/matriculas.component";
+import {VerAulaComponent} from "./views/matriculas/ver-aula/ver-aula.component";
 
 export const routes: Routes = [
     {
@@ -215,6 +218,21 @@ export const routes: Routes = [
             {
                 path: 'responder-prova/:idAval/:idTurma',
                 component: ResponderProvaComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'relatorio-aluno-curso',
+                component: RelatorioAlunoCursoComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'matriculas',
+                component: MatriculasComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'aula/:id',
+                component: VerAulaComponent,
                 canActivate: [AuthGuardService]
             },
             {

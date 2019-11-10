@@ -65,6 +65,14 @@ export class AlunoController {
         res.send(response);
     }
 
+    public async login(req: Request, res: Response) {
+        const alunoRequestBody = req.body;
+        const email = alunoRequestBody.login;
+        const senha = Utils.encryptPassword(alunoRequestBody.senha);
+
+        res.send(await AlunoController.listAlunosLogin(email, senha));
+    }
+
     public async list(req: Request, res: Response) {
         res.send(await AlunoController.listAlunos())
     }
@@ -193,6 +201,13 @@ export class AlunoController {
         }
         // Listo todos os cursos
         return await AlunosMongo.find({});
+    }
+
+    public static async listAlunosLogin(email: string, senha: string) {
+        const AlunosMongo = mongoose.model('alunos', Alunos);
+
+        // Listo todos os cursos
+        return await AlunosMongo.find({email: email, senha: senha});
     }
 
     private static async updateAluno(id: string, nome: string, sobrenome: string, email: string, sexo: string, dataNascimento: string, senha?: string) {

@@ -175,6 +175,22 @@ class CursoController {
         return await CursosMongo.collection.insertOne(curso);
     }
 
+    public async listByIdInternal(id?: string): Promise<any> {
+        const CursosMongo = mongoose.model('cursos', Cursos);
+
+        // Adiciono o id à busca
+        if (id != undefined && Utils.isStrValid(id)) {
+            // Se o lenght for menor que 24, não é um objectID diferente
+            id = id.toString();
+            if (id.length != 24)
+                return false;
+            // Listo usuario com o id enviado
+            return await CursosMongo.findById(id);
+        }
+        // Listo todos os cursos
+        return await CursosMongo.find({});
+    }
+
     private static async listCurso(id?: string) {
         const CursosMongo = mongoose.model('cursos', Cursos);
 

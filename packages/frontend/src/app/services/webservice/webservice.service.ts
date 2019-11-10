@@ -36,19 +36,19 @@ export class WebserviceService {
         if (id != undefined)
             params = {id: id};
 
-        return this.doGet(this.urlBuilder('usuario/list'), params);
+        return this.doGet(this.urlBuilder('aluno/list'), params);
     }
 
     insertAluno(payload: any) {
-        return this.doPost(this.urlBuilder('usuario/insert'), payload);
+        return this.doPost(this.urlBuilder('aluno/insert'), payload);
     }
 
     updateAluno(payload: any) {
-        return this.doPut(this.urlBuilder('usuario/update'), payload)
+        return this.doPut(this.urlBuilder('aluno/update'), payload)
     }
 
     deleteAluno(id: string) {
-        return this.doDelete(this.urlBuilder('usuario/delete'), {id: id})
+        return this.doDelete(this.urlBuilder('aluno/delete'), {id: id})
     }
 
     listarProfessores(id?: string) {

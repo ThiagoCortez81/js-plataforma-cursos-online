@@ -114,7 +114,6 @@ class ProfessorController {
                     const senhaHash = Utils.encryptPassword(senha);
 
                     professorResponse = await ProfessorController.updateProfessor(id, nome, sobrenome, email, sexo, dataNascimento, telefone, endereco, formacoes, senhaHash);
-                    console.log(professorResponse);
 
                     if (professorResponse.n == professorResponse.ok) {
                         response = {
@@ -135,7 +134,6 @@ class ProfessorController {
                 }
             } else {
                 professorResponse = await ProfessorController.updateProfessor(id, nome, sobrenome, email, sexo, dataNascimento, telefone, endereco, formacoes);
-                console.log(professorResponse);
                 if (professorResponse.n == professorResponse.ok) {
                     response = {
                         success: true,

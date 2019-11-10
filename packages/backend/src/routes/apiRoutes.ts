@@ -3,6 +3,7 @@ import alunoController from "../controller/alunoController";
 import professorController from "../controller/professorController";
 import usuarioController from "../controller/usuarioController";
 import cursoController from "../controller/cursoController";
+import matriculaController from "../controller/matriculaController";
 
 class ApiRoutes {
 
@@ -21,6 +22,8 @@ class ApiRoutes {
         this.mountAlunoRoutes();
         this.mountProfessorRoutes();
         this.mountCursosRoutes();
+        this.mountMatriculasRoutes();
+        this.mountRelatorioRoutes();
 
         // this.router.post('/login', userController.loginUsuario);
     }
@@ -34,11 +37,11 @@ class ApiRoutes {
     }
 
     private mountAlunoRoutes() {
-        this.router.get('/usuario/list', alunoController.list);
-        this.router.get('/usuario/list/:id', alunoController.listById);
-        this.router.post('/usuario/insert', alunoController.insert);
-        this.router.put('/usuario/update', alunoController.update);
-        this.router.delete('/usuario/delete/:id', alunoController.delete);
+        this.router.get('/aluno/list', alunoController.list);
+        this.router.get('/aluno/list/:id', alunoController.listById);
+        this.router.post('/aluno/insert', alunoController.insert);
+        this.router.put('/aluno/update', alunoController.update);
+        this.router.delete('/aluno/delete/:id', alunoController.delete);
     }
 
     private mountProfessorRoutes() {
@@ -55,6 +58,18 @@ class ApiRoutes {
         this.router.post('/curso/insert', cursoController.insert);
         this.router.put('/curso/update', cursoController.update);
         this.router.delete('/curso/delete/:id', cursoController.delete);
+    }
+
+    private mountMatriculasRoutes() {
+        this.router.get('/matricula/list', matriculaController.list);
+        this.router.get('/matricula/list/:id', matriculaController.listById);
+        this.router.post('/matricula/insert', matriculaController.insert);
+        this.router.put('/matricula/update', matriculaController.update);
+        this.router.delete('/matricula/delete/:id', matriculaController.delete);
+    }
+
+    private mountRelatorioRoutes() {
+        this.router.get('/relatorio/relatorio-aluno-curso', matriculaController.list);
     }
 }
 

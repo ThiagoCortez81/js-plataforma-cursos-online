@@ -6,7 +6,7 @@ import {Schema} from "mongoose";
 
 const SECRET = process.env.SECRET || "sleocgrient";
 
-class AlunoController {
+export class AlunoController {
     // HTTP Handlers
     public async insert(req: Request, res: Response) {
         let response = {};
@@ -165,7 +165,7 @@ class AlunoController {
 
     // Interação com o banco de dados
     private static async newAluno(nome: string, sobrenome: string, email: string, senha: string, sexo: string, dataNascimento: string) {
-        const AlunosMongo = mongoose.model('cursos', Alunos);
+        const AlunosMongo = mongoose.model('alunos', Alunos);
 
         const aluno = new AlunosMongo({
             nome: nome,
@@ -179,12 +179,13 @@ class AlunoController {
         return await AlunosMongo.collection.insertOne(aluno);
     }
 
-    private static async listAlunos(id?: string) {
-        const AlunosMongo = mongoose.model('cursos', Alunos);
+    public static async listAlunos(id?: string) {
+        const AlunosMongo = mongoose.model('alunos', Alunos);
 
         // Adiciono o id à busca
         if (id != undefined && Utils.isStrValid(id)) {
             // Se o lenght for menor que 24, não é um objectID diferente
+            id = id.toString();
             if (id.length != 24)
                 return false;
             // Listo usuario com o id enviado
@@ -195,7 +196,7 @@ class AlunoController {
     }
 
     private static async updateAluno(id: string, nome: string, sobrenome: string, email: string, sexo: string, dataNascimento: string, senha?: string) {
-        const AlunosMongo = mongoose.model('cursos', Alunos);
+        const AlunosMongo = mongoose.model('alunos', Alunos);
 
         let aluno = {
             nome: nome,
@@ -213,7 +214,7 @@ class AlunoController {
     }
 
     private static async deleteAluno(id: string) {
-        const AlunosMongo = mongoose.model('cursos', Alunos);
+        const AlunosMongo = mongoose.model('alunos', Alunos);
 
         if (id.length != 24)
             return false;

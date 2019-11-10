@@ -165,7 +165,7 @@ class UsuarioController {
 
     // Interação com o banco de dados
     private static async newUsuario(nome: string, sobrenome: string, email: string, senha: string, sexo: string, dataNascimento: string) {
-        const UsuariosMongo = mongoose.model('usuario', Usuarios);
+        const UsuariosMongo = mongoose.model('usuarios', Usuarios);
 
         const usuario = new UsuariosMongo({
             nome: nome,
@@ -180,7 +180,7 @@ class UsuarioController {
     }
 
     private static async listUsuario(id?: string) {
-        const UsuariosMongo = mongoose.model('usuario', Usuarios);
+        const UsuariosMongo = mongoose.model('usuarios', Usuarios);
 
         // Adiciono o id à busca
         if (id != undefined && Utils.isStrValid(id)) {
@@ -195,7 +195,7 @@ class UsuarioController {
     }
 
     private static async updateUsuario(id: string, nome: string, sobrenome: string, email: string, sexo: string, dataNascimento: string, senha?: string) {
-        const UsuariosMongo = mongoose.model('usuario', Usuarios);
+        const UsuariosMongo = mongoose.model('usuarios', Usuarios);
 
         let usuario = {
             nome: nome,
@@ -213,7 +213,7 @@ class UsuarioController {
     }
 
     private static async deleteUsuario(id: string) {
-        const UsuariosMongo = mongoose.model('usuario', Usuarios);
+        const UsuariosMongo = mongoose.model('usuarios', Usuarios);
 
         if (id.length != 24)
             return false;

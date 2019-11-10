@@ -1,0 +1,24 @@
+<div class="animated fadeIn">
+    <div class="card">
+        <div class="card-header">
+            <b>Aula selecionada</b>
+        </div>
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col-md-12 alert alert-primary text-center" role="alert" *ngIf="matricula != null && !matricula.matricula.emAndamento">
+                    <b>Atenção!</b> Você já concluiu esse curso, agora você só poderá visualizar o vídeo.
+                </div>
+                <div class="col-md-12 text-center">
+                    <iframe *ngIf="matricula" width="560" height="315"
+                            [src]="urlAula()" frameborder="0"
+                            allowfullscreen></iframe>
+                </div>
+                <div class="col-md-12 mt-5 text-right">
+                    <button class="btn btn-lg btn-primary" *ngIf="matricula != null && matricula.matricula.emAndamento"
+                            (click)="finalizarAula()"><i class="fa fa-send"></i> Finalizar curso
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-md-4" *ngFor="let curso of cursos">
+    <div class="card">
+      <img class="card-img-top" [src]="curso.urlCapa" alt="Imagem de capa do card">
+      <div class="card-body">
+        <h5 class="card-title"><b>{{curso.curso.nome}}</b></h5>
+        <p class="card-text">
+          Professor: {{curso.professor.nome}}<br>
+          Descrição: {{curso.curso.descricao}}
+        </p>
+        <button class="btn btn-primary float-right" (click)="visualizarCurso(curso.matriculado)" *ngIf="curso.matriculado != null"><i class="fa fa-eye"></i> Visualizar Curso</button>
+        <button class="btn btn-primary float-right" (click)="matricularCurso(curso.curso._id)" *ngIf="curso.matriculado == null"><i class="fa fa-plus"></i> Matricular no Curso</button>
+      </div>
+    </div>
+  </div>
+</div>

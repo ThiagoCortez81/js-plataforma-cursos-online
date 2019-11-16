@@ -47,6 +47,7 @@ class RelatorioController {
             let listAlunoCursoFinal = [];
 
             for (let curso of listAlunoCurso) {
+                curso.dataMatricula = curso.dataMatricula.toString().substr(0, 19) + "Z";
                 curso.dataFinalizacao = curso.dataFinalizacao.toString().substr(0, 19) + "Z";
 
                 const cursoDados = await cursoController.listByIdInternal(curso.curso);

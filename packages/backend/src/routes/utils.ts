@@ -20,39 +20,8 @@ export class Utils {
         return (str != null && str != undefined && str != "");
     }
 
-    static listTest(list: Array<any>){
-        return (list != null && list != undefined);
-    }
-
-    static verifyJWT(req: any, res: any, next: any){
-        const token = req.headers['x-access-token'];
-        if (!token) return res.status(200).send({ isAuthenticated: false, authenticationMessage: 'Token expirado, faça o login novamente!' });
-
-        const secret = process.env.SECRET || "";
-
-        jwt.verify(token, secret, function(err: any, decoded: any) {
-            if (err) return res.status(200).send({ isAuthenticated: false, authenticationMessage: 'Token expirado, faça o login novamente!' });
-
-            // se tudo estiver ok, salva no request para uso posterior
-            req.user = decoded;
-            next();
-        });
-    }
-
-    static geraDataNow(){
-        const tzoffset = 18000000; // UTC -3
-
-        let localISOTime = (new Date(Date.now() - tzoffset)).toISOString().replace("T", " ").replace("Z", "");
-        return localISOTime.substr(0, localISOTime.length - 4);
-    }
-
-    static primeiroDiaMesCorrente() {
-        const date = new Date();
-        return new Date(date.getFullYear(), date.getMonth(), 1).toISOString().substr(0, 10);
-    }
-
-    static ultimoDiaMesCorrente() {
-        const date = new Date();
-        return new Date(date.getFullYear(), date.getMonth() + 1, 0).toISOString().substr(0, 10);
+    static returnMonthString(month: number) {
+        const months = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+        return months[month];
     }
 }

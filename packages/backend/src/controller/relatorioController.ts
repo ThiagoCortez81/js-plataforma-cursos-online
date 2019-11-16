@@ -84,6 +84,43 @@ class RelatorioController {
         });
     }
 
+    public async relatorioVendasMensais(req: Request, res: Response) {
+        const listVendasCurso: any = await MatriculaController.listMatricula();
+        if (listVendasCurso) {
+            let listVendasCursoFinal: any = [];
+            let listVendasCursoItr: any = {};
+
+            for (let venda of listVendasCurso) {
+                venda.dataMatricula = venda.dataMatricula.toString().substr(0, 19) + "Z";
+                const cursoObj = await cursoController.listByIdInternal(venda.curso);
+
+                const objDataMatricula = new Date(venda.dataMatricula);
+                const mes = Utils.returnMonthString(objDataMatricula.getMonth());
+
+                if (listVendasCursoItr[mes] == null)
+                    listVendasCursoItr[mes] = 0;
+                listVendasCursoItr[mes] += cursoObj.valor;
+            }
+
+            for (const mes of Object.keys(listVendasCursoItr)){
+                listVendasCursoFinal.push({
+                    mes: mes,
+                    vendas: listVendasCursoItr[mes].toFixed(2)
+                })
+            }
+
+            res.send({
+                success: true,
+                listVendasCurso: listVendasCursoFinal
+            });
+            return;
+        }
+        res.send({
+            success: false,
+            listVendasCurso: []
+        });
+    }
+
     // Interação com Mongo
     private static async getMapAlunoCurso(): Promise<any[]> {
         const UsuariosMongo = mongoose.model('matriculas', Matriculas);

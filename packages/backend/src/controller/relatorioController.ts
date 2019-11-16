@@ -31,7 +31,10 @@ class RelatorioController {
     }
 
     public async relatorioCursosProfessor(req: Request, res: Response) {
-        res.send(await RelatorioController.getMapProfessorCurso());
+        res.send({
+            success: true,
+            listCursosProfessor: await RelatorioController.getMapProfessorCurso()
+        });
     }
 
     public async relatorioAlunoCursoConcluintes(req: Request, res: Response) {

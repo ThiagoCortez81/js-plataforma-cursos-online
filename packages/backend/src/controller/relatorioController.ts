@@ -6,6 +6,7 @@ import {Schema} from "mongoose";
 import cursoController from "./cursoController";
 import matriculaController, {MatriculaController} from "./matriculaController";
 import professorController from "./professorController";
+import alunoController, {AlunoController} from "./alunoController";
 
 const SECRET = process.env.SECRET || "sleocgrient";
 
@@ -47,9 +48,11 @@ class RelatorioController {
 
             for (let curso of listAlunoCurso) {
                 const cursoDados = await cursoController.listByIdInternal(curso.curso);
+                const alunoDados = await AlunoController.listAlunos(curso.aluno);
                 const cursoObj = {
                     curso,
-                    cursoDados
+                    cursoDados,
+                    alunoDados
                 };
 
                 listAlunoCursoFinal.push(cursoObj);

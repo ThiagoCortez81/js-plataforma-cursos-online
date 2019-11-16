@@ -51,10 +51,12 @@ class RelatorioController {
 
                 const cursoDados = await cursoController.listByIdInternal(curso.curso);
                 const alunoDados = await AlunoController.listAlunos(curso.aluno);
+                const professorDados = await professorController.listProfessores(cursoDados.idProfessor);
                 const cursoObj = {
                     curso,
                     cursoDados,
-                    alunoDados
+                    alunoDados,
+                    professorDados
                 };
 
                 listAlunoCursoFinal.push(cursoObj);

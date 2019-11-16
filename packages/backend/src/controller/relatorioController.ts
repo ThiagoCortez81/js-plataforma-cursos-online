@@ -50,6 +50,14 @@ class RelatorioController {
                 curso.dataMatricula = curso.dataMatricula.toString().substr(0, 19) + "Z";
                 curso.dataFinalizacao = curso.dataFinalizacao.toString().substr(0, 19) + "Z";
 
+                const diferenca = new Date(curso.dataFinalizacao).getTime() - new Date(curso.dataMatricula).getTime();
+                let diferencaTempo = '';
+
+                if (diferenca > 60e3)
+                    diferencaTempo = `${Math.floor(diferenca / 60e3)} minutos`;
+                else
+                    diferencaTempo = `${Math.floor(diferenca / 1e3)} segundos`
+
                 const cursoDados = await cursoController.listByIdInternal(curso.curso);
                 const alunoDados = await AlunoController.listAlunos(curso.aluno);
                 const professorDados = await professorController.listProfessores(cursoDados.idProfessor);
@@ -57,7 +65,8 @@ class RelatorioController {
                     curso,
                     cursoDados,
                     alunoDados,
-                    professorDados
+                    professorDados,
+                    diferencaTempo
                 };
 
                 listAlunoCursoFinal.push(cursoObj);

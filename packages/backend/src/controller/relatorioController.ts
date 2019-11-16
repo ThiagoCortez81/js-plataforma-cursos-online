@@ -47,6 +47,8 @@ class RelatorioController {
             let listAlunoCursoFinal = [];
 
             for (let curso of listAlunoCurso) {
+                curso.dataFinalizacao = curso.dataFinalizacao.toString().substr(0, 19) + "Z";
+
                 const cursoDados = await cursoController.listByIdInternal(curso.curso);
                 const alunoDados = await AlunoController.listAlunos(curso.aluno);
                 const cursoObj = {

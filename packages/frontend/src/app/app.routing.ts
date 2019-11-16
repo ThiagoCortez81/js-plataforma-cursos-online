@@ -34,6 +34,9 @@ import {CursosEditComponent} from "./views/cursos/cursos-edit/cursos-edit.compon
 import {RelatorioAlunoCursoComponent} from "./views/relatorio-aluno-curso/relatorio-aluno-curso.component";
 import {MatriculasComponent} from "./views/matriculas/matriculas.component";
 import {VerAulaComponent} from "./views/matriculas/ver-aula/ver-aula.component";
+import {RelatorioCursoProfessorComponent} from "./views/relatorio-curso-professor/relatorio-curso-professor.component";
+import {RelatorioAlunosConcluintesCursoComponent} from "./views/relatorio-alunos-concluintes-curso/relatorio-alunos-concluintes-curso.component";
+import {RelatorioVendasMensaisComponent} from "./views/relatorio-vendas-mensais/relatorio-vendas-mensais.component";
 
 export const routes: Routes = [
     {
@@ -223,6 +226,21 @@ export const routes: Routes = [
             {
                 path: 'relatorio-aluno-curso',
                 component: RelatorioAlunoCursoComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'relatorio-curso-professor',
+                component: RelatorioCursoProfessorComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'relatorio-alunos-concluintes-curso',
+                component: RelatorioAlunosConcluintesCursoComponent,
+                canActivate: [AuthGuardService]
+            },
+            {
+                path: 'relatorio-vendas-mensais',
+                component: RelatorioVendasMensaisComponent,
                 canActivate: [AuthGuardService]
             },
             {

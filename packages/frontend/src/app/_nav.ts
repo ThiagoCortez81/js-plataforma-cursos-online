@@ -74,6 +74,24 @@ export const navItems: NavData[] = [
     url: '/relatorio-aluno-curso',
     icon: 'icon-puzzle',
     class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
+  },
+  {
+    name: 'Relatório de Curso por Professor',
+    url: '/relatorio-curso-professor',
+    icon: 'icon-puzzle',
+    class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
+  },
+  {
+    name: 'Relatório de Alunos Concluíntes Por Curso',
+    url: '/relatorio-alunos-concluintes-curso',
+    icon: 'icon-puzzle',
+    class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
+  },
+  {
+    name: 'Relatório de Vendas Mensais',
+    url: '/relatorio-vendas-mensais',
+    icon: 'icon-puzzle',
+    class: ((localStorage.getItem('aluno') != "null") ? 'd-none' : '')
   }
   /*
   {

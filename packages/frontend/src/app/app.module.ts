@@ -68,6 +68,9 @@ import { CursosEditComponent } from './views/cursos/cursos-edit/cursos-edit.comp
 import { RelatorioAlunoCursoComponent } from './views/relatorio-aluno-curso/relatorio-aluno-curso.component';
 import { MatriculasComponent } from './views/matriculas/matriculas.component';
 import { VerAulaComponent } from './views/matriculas/ver-aula/ver-aula.component';
+import { RelatorioCursoProfessorComponent } from './views/relatorio-curso-professor/relatorio-curso-professor.component';
+import { RelatorioAlunosConcluintesCursoComponent } from './views/relatorio-alunos-concluintes-curso/relatorio-alunos-concluintes-curso.component';
+import { RelatorioVendasMensaisComponent } from './views/relatorio-vendas-mensais/relatorio-vendas-mensais.component';
 
 
 
@@ -120,7 +123,10 @@ import { VerAulaComponent } from './views/matriculas/ver-aula/ver-aula.component
         CursosEditComponent,
         RelatorioAlunoCursoComponent,
         MatriculasComponent,
-        VerAulaComponent
+        VerAulaComponent,
+        RelatorioCursoProfessorComponent,
+        RelatorioAlunosConcluintesCursoComponent,
+        RelatorioVendasMensaisComponent
     ],
     providers: [{
         provide: LocationStrategy,

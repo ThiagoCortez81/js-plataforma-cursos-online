@@ -1,7 +1,7 @@
 {
   "databaseConf": {
     "mongo": {
-      "host": "localhost",
+      "host": "cortezit.me",
       "database": "plataformaCursos"
     }
   }

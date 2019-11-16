@@ -73,6 +73,8 @@ class ApiRoutes {
 
     private mountRelatorioRoutes() {
         this.router.get('/relatorio/relatorio-aluno-curso', relatorioController.relatorioAlunoCurso);
+        this.router.get('/relatorio/relatorio-cursos-professor', relatorioController.relatorioCursosProfessor);
+        this.router.get('/relatorio/relatorio-aluno-curso-concluintes', relatorioController.relatorioAlunoCursoConcluintes);
     }
 }
 

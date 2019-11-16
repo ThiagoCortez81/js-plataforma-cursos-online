@@ -8,7 +8,7 @@ import cursoController from "./cursoController";
 
 const SECRET = process.env.SECRET || "sleocgrient";
 
-class MatriculaController {
+export class MatriculaController {
     // HTTP Handlers
     public async insert(req: Request, res: Response) {
         let response = {};

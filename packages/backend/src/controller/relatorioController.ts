@@ -41,30 +41,22 @@ class RelatorioController {
         const dataMin = req.body.dataMin;
         const dataMax = req.body.dataMax;
 
-        if (Utils.isStrValid(dataMin) && Utils.isStrValid(dataMax)) {
-            const listAlunoCurso: any[] = await RelatorioController.getMapAlunoCursoConcluintes(dataMin, dataMax);
-            if (listAlunoCurso) {
-                for (let curso of listAlunoCurso) {
-                    curso['dadosCurso'] = await cursoController.listByIdInternal(curso._id);
-                }
-
-                res.send({
-                    success: true,
-                    listAlunoCurso: listAlunoCurso
-                });
-                return;
+        const listAlunoCurso: any[] = await RelatorioController.getMapAlunoCursoConcluintes(dataMin, dataMax);
+        if (listAlunoCurso) {
+            for (let curso of listAlunoCurso) {
+                curso['dadosCurso'] = await cursoController.listByIdInternal(curso._id);
             }
+
             res.send({
-                success: false,
-                listAlunoCurso: []
+                success: true,
+                listAlunoCurso: listAlunoCurso
             });
-        } else {
-            res.send({
-                success: false,
-                listAlunoCurso: [],
-                error: "Envie o range de datas."
-            });
+            return;
         }
+        res.send({
+            success: false,
+            listAlunoCurso: []
+        });
     }
 
     // Interação com Mongo
@@ -79,15 +71,18 @@ class RelatorioController {
         const UsuariosMongo = mongoose.model('matriculas', Matriculas);
 
         // Listo todos os cursos
-        return await UsuariosMongo.aggregate([{
-            $match: {
-                $and: [{
-                    "dataFinalizacao": {$gte: dataMin}
-                }, {
-                    "dataFinalizacao": {$lte: dataMax}
-                }]
-            }
-        }, {$group: {_id: "$curso", count: {$sum: 1}}}]);
+        if (Utils.isStrValid(dataMin) && Utils.isStrValid(dataMax))
+            return await UsuariosMongo.aggregate([{
+                $match: {
+                    $and: [{
+                        "dataFinalizacao": {$gte: dataMin}
+                    }, {
+                        "dataFinalizacao": {$lte: dataMax}
+                    }]
+                }
+            }, {$group: {_id: "$curso", count: {$sum: 1}}}]);
+
+        return await UsuariosMongo.aggregate([{$group: {_id: "$curso", count: {$sum: 1}}}]);
     }
 
     private static async getMapProfessorCurso(): Promise<any[]> {

@@ -85,10 +85,14 @@ class RelatorioController {
                     "dataFinalizacao": {$gte: dataMin}
                 }, {
                     "dataFinalizacao": {$lte: dataMax}
+                }, {
+                    "emAndamento": false
                 }]
             });
 
-        return await UsuariosMongo.find();
+        return await UsuariosMongo.find({
+            "emAndamento": false
+        });
     }
 
     private static async getMapProfessorCurso(): Promise<any[]> {

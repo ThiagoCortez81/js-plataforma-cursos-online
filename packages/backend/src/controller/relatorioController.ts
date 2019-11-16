@@ -43,13 +43,21 @@ class RelatorioController {
 
         const listAlunoCurso: any[] = await RelatorioController.getMapAlunoCursoConcluintes(dataMin, dataMax);
         if (listAlunoCurso) {
+            let listAlunoCursoFinal = [];
+
             for (let curso of listAlunoCurso) {
-                curso['dadosCurso'] = await cursoController.listByIdInternal(curso._id);
+                const cursoDados = await cursoController.listByIdInternal(curso.curso);
+                const cursoObj = {
+                    curso,
+                    cursoDados
+                };
+
+                listAlunoCursoFinal.push(cursoObj);
             }
 
             res.send({
                 success: true,
-                listAlunoCurso: listAlunoCurso
+                listAlunoCurso: listAlunoCursoFinal
             });
             return;
         }

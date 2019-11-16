@@ -105,6 +105,7 @@ class RelatorioController {
             for (const mes of Object.keys(listVendasCursoItr)){
                 listVendasCursoFinal.push({
                     mes: mes,
+                    sequencial: Utils.returnMonthIndex(mes),
                     vendas: listVendasCursoItr[mes].toFixed(2)
                 })
             }

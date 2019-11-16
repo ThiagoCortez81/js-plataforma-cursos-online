@@ -72,17 +72,15 @@ class RelatorioController {
 
         // Listo todos os cursos
         if (Utils.isStrValid(dataMin) && Utils.isStrValid(dataMax))
-            return await UsuariosMongo.aggregate([{
-                $match: {
-                    $and: [{
-                        "dataFinalizacao": {$gte: dataMin}
-                    }, {
-                        "dataFinalizacao": {$lte: dataMax}
-                    }]
-                }
-            }, {$group: {_id: "$curso", count: {$sum: 1}}}]);
+            return await UsuariosMongo.find({
+                $and: [{
+                    "dataFinalizacao": {$gte: dataMin}
+                }, {
+                    "dataFinalizacao": {$lte: dataMax}
+                }]
+            });
 
-        return await UsuariosMongo.aggregate([{$group: {_id: "$curso", count: {$sum: 1}}}]);
+        return await UsuariosMongo.find();
     }
 
     private static async getMapProfessorCurso(): Promise<any[]> {
